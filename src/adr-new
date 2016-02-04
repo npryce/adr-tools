@@ -12,8 +12,14 @@ then
     exit 1
 fi
 
-maxid=$((cd $dstdir && ls) | grep -Eo '^[0-9]+' | sort -rn | head -1)
-newnum=$(($maxid + 1))
+if [ -d $dstdir ]
+then
+    maxid=$(ls $dstdir | grep -Eo '^[0-9]+' | sort -rn | head -1)
+    newnum=$(($maxid + 1))
+else
+    newnum=1
+fi
+
 newid=$(printf "%04d" $newnum)
 slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:])
 dstfile=$dstdir/$newid-$slug.md
