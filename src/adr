@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+
+cmd=$(dirname $0)/adr-$1
+
+if [ ! -x $cmd ]
+then
+    echo "usage: $0 COMMAND [ARG] ..."
+    echo "COMMAND is one of: "
+    $(dirname $0)/adr-commands | sed 's/^/  /'
+    exit 1
+fi
+
+$cmd "${@:2}"

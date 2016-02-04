@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+template=$(dirname $0)/template.md
+dstdir=$($(dirname $0)/adr-dir)
+
+title="$@"
+
+if [ -z "$title" ]
+then
+    echo ERROR: no title given
+    exit 1
+fi
+
+maxid=$((cd $dstdir && ls) | grep -Eo '^[0-9]+' | sort -rn | head -1)
+newnum=$(($maxid + 1))
+newid=$(printf "%04d" $newnum)
+slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:])
+dstfile=$dstdir/$newid-$slug.md
+date=$(date +%d/%m/%Y)
+
+mkdir -p $dstdir
+cat $template | sed -e "s|NUMBER|$newnum|" -e "s|TITLE|$title|" -e "s|DATE|$date|" > $dstfile
+
+${EDITOR:-${VISUAL:-true}} $dstfile
+echo $dstfile

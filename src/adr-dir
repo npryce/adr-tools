@@ -1,0 +1,4 @@
+#!/bin/bash
+set -e
+
+echo ${ADR_DIR:-doc/adr}
