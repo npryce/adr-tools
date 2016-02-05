@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
 
-adr_dir=$($(dirname $0)/adr-dir)
+adr_dir=$($(dirname $0)/_adr-dir)
 
 find $adr_dir | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md"

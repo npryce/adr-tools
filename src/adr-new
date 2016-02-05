@@ -2,7 +2,7 @@
 set -e
 
 template=$(dirname $0)/template.md
-dstdir=$($(dirname $0)/adr-dir)
+dstdir=$($(dirname $0)/_adr-dir)
 
 title="$@"
 
