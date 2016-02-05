@@ -1,0 +1,20 @@
++ adr new First Decision
+doc/adr/0001-first-decision.md
++ adr new Second Decision
+doc/adr/0002-second-decision.md
++ adr new Third Decision
+doc/adr/0003-third-decision.md
++ ls doc/adr
+0001-first-decision.md
+0002-second-decision.md
+0003-third-decision.md
++ head -4 doc/adr/0002-second-decision.md
+# 2. Second Decision
+
+Date: 05/02/2016
+
++ head -4 doc/adr/0003-third-decision.md
+# 3. Third Decision
+
+Date: 05/02/2016
+
