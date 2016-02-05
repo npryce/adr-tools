@@ -1,13 +1,14 @@
 
-TESTS=$(wildcard tests/*.sh)
+TESTS:=$(wildcard tests/*.sh)
+SRC:=$(wildcard src/*)
 
 all: $(TESTS:tests/%.sh=build/tests/%.diff)
 	@echo SUCCESS
 
 build/tests/%.diff: build/tests/%.output tests/%.expected
-	diff --new-file $^ > $@
+	(diff --new-file $^ > $@) || (rm -f $@ && false)
 
-build/tests/%.output: tests/%.sh tests/%.expected
+build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@echo TEST: $*
 	@mkdir -p $(dir $@)/$*
 	@cd $(dir $@)/$* && PATH=$(abspath src):$(PATH) VISUAL= EDITOR= /bin/sh -x $(abspath $<) > $(abspath $@) 2>&1

@@ -28,5 +28,5 @@ date=$(date +%d/%m/%Y)
 mkdir -p $dstdir
 cat $template | sed -e "s|NUMBER|$newnum|" -e "s|TITLE|$title|" -e "s|DATE|$date|" > $dstfile
 
-${EDITOR:-${VISUAL:-true}} $dstfile
+${VISUAL:-${EDITOR:-true}} $dstfile
 echo $dstfile
