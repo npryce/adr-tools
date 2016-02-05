@@ -12,5 +12,13 @@ build/tests/%/output: tests/%.sh tests/%.expected
 clean:
 	rm -rf build/
 
+ifdef test
+approved: $(patsubst %.sh,build/%/output,$(test))
+	cp $< $(patsubst %.sh,%.expected,$(test))
+else
+approved:
+	@echo usage: make test=TEST_SCRIPT approved
+endif
+
 .PHONY: all clean
 
