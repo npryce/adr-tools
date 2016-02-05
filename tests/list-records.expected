@@ -1,0 +1,17 @@
++ adr list
+find: doc/adr: No such file or directory
++ adr new first
+doc/adr/0001-first.md
++ adr list
+doc/adr/0001-first.md
++ adr new second
+doc/adr/0002-second.md
++ adr list
+doc/adr/0001-first.md
+doc/adr/0002-second.md
++ adr new third
+doc/adr/0003-third.md
++ adr list
+doc/adr/0001-first.md
+doc/adr/0002-second.md
+doc/adr/0003-third.md
