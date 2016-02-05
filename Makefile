@@ -10,6 +10,7 @@ build/tests/%.diff: build/tests/%.output tests/%.expected
 
 build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@echo TEST: $*
+	@rm -rf $(dir $@)/$*
 	@mkdir -p $(dir $@)/$*
 	@cd $(dir $@)/$* && PATH=$(abspath src):$(PATH) VISUAL= EDITOR= /bin/sh -x $(abspath $<) > $(abspath $@) 2>&1
 
