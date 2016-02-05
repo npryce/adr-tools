@@ -1,0 +1,9 @@
++ export ADR_DIR=alternative-dir
++ ADR_DIR=alternative-dir
++ adr new Example ADR
+alternative-dir/0001-example-adr.md
++ ls -R .
+alternative-dir
+
+./alternative-dir:
+0001-example-adr.md
