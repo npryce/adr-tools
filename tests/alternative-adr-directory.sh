@@ -1,3 +1,7 @@
-export ADR_DIR=alternative-dir
+ADR_DIR=alternative-dir
+export ADR_DIR
+
 adr new Example ADR
-ls -R .
+
+ls .
+ls alternative-dir
