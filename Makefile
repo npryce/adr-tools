@@ -12,7 +12,13 @@ build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@echo TEST: $*
 	@rm -rf $(dir $@)/$*
 	@mkdir -p $(dir $@)/$*
-	@cd $(dir $@)/$* && PATH=$(abspath src):$(PATH) ADR_DATE=12/01/1992 VISUAL= EDITOR= /bin/sh -x $(abspath $<) > $(abspath $@) 2>&1
+	@cd $(dir $@)/$* && \
+	  PATH=$(abspath src):$(PATH) \
+	  ADR_DATE=12/01/1992 \
+	  VISUAL= \
+	  EDITOR= \
+	  PS4='+ ' \
+	    /bin/sh -x $(abspath $<) > $(abspath $@) 2>&1
 
 clean:
 	rm -rf build/
