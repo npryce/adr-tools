@@ -6,7 +6,7 @@ check: $(TESTS:tests/%.sh=build/tests/%.diff)
 	@echo SUCCESS
 
 build/tests/%.diff: build/tests/%.output tests/%.expected
-	diff --new-file $^ > $@ || ! cat $@
+	diff --side-by-side $^ > $@ || ! cat $@
 
 build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@echo TEST: $*
