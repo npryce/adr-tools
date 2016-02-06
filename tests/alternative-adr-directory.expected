@@ -6,3 +6,5 @@ alternative-dir/0001-example-adr.md
 alternative-dir
 + ls alternative-dir
 0001-example-adr.md
++ adr list
+alternative-dir/0001-example-adr.md
