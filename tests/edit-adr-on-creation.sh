@@ -1,14 +1,14 @@
 export EDITOR
 export VISUAL
 
-EDITOR="echo EDITOR"
+EDITOR=fake-editor
 VISUAL=
 adr new created with EDITOR environment variable set
 
 EDITOR=
-VISUAL="echo VISUAL"
+VISUAL=fake-visual
 adr new created with VISUAL environment variable set
 
-EDITOR="echo EDITOR"
-VISUAL="echo VISUAL"
+EDITOR=fake-editor
+VISUAL=fake-visual
 adr new uses setting of VISUAL if both VISUAL and EDITOR are set
