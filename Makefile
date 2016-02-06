@@ -2,7 +2,7 @@
 TESTS:=$(wildcard tests/*.sh)
 SRC:=$(wildcard src/*)
 
-all: $(TESTS:tests/%.sh=build/tests/%.diff)
+check: $(TESTS:tests/%.sh=build/tests/%.diff)
 	@echo SUCCESS
 
 build/tests/%.diff: build/tests/%.output tests/%.expected
