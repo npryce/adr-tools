@@ -23,7 +23,7 @@ fi
 newid=$(printf "%04d" $newnum)
 slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:])
 dstfile=$dstdir/$newid-$slug.md
-date=$(date +%d/%m/%Y)
+date=${ADR_DATE:-$(date +%d/%m/%Y)}
 
 mkdir -p $dstdir
 cat $template | sed -e "s|NUMBER|$newnum|" -e "s|TITLE|$title|" -e "s|DATE|$date|" > $dstfile
