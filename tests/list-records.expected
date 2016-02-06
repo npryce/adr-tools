@@ -1,5 +1,5 @@
 + adr list
-find: doc/adr: No such file or directory
+The doc/adr directory does not exist
 + adr new first
 doc/adr/0001-first.md
 + adr list

@@ -3,4 +3,11 @@ set -e
 
 adr_dir=$($(dirname $0)/_adr-dir)
 
-find $adr_dir | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md"
+if [ -d $adr_dir ]
+then
+   find $adr_dir | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md"
+else
+    echo "The $adr_dir directory does not exist"
+    exit 1
+fi
+
