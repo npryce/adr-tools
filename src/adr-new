@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-template=$(dirname $0)/template.md
+template=${ADR_TEMPLATE:-$(dirname $0)/template.md}
 dstdir=$($(dirname $0)/_adr-dir)
 
 title="$@"

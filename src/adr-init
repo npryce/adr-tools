@@ -1,0 +1,3 @@
+#!/bin/bash
+set -e
+VISUAL=true ADR_TEMPLATE="$(dirname $0)/init.md" adr new record-architecture-decisions
