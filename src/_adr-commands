@@ -1,4 +1,4 @@
 #!/bin/bash
 set -e
 
-(cd $(dirname $0) && ls adr-*) | cut -c 5-
+(cd $(dirname $0) && find . -name 'adr-*' -perm +111) | cut -c 7-
