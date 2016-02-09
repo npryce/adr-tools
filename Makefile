@@ -33,4 +33,5 @@ endif
 
 .PHONY: all clean
 .PRECIOUS: build/tests/%.output
+.DELETE_ON_ERROR: %.diff
 
