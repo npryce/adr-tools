@@ -5,6 +5,10 @@ doc/adr/0001-the-first-decision.md
 
 Date: 12/01/1992
 
+## Status
+
+Accepted
+
 ## Context
 
 Context here...
@@ -13,13 +17,6 @@ Context here...
 
 Decision here...
 
-## Status
-
-Accepted | Superceded by [ADR n](link) (delete/complete as applicable)
-
-Supercedes [ADR n](link) (if applicable)
-
 ## Consequences
 
 Consequences here...
-

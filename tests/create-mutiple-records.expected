@@ -8,13 +8,19 @@ doc/adr/0003-third-decision.md
 0001-first-decision.md
 0002-second-decision.md
 0003-third-decision.md
-+ head -4 doc/adr/0002-second-decision.md
++ head -7 doc/adr/0002-second-decision.md
 # 2. Second Decision
 
 Date: 12/01/1992
 
-+ head -4 doc/adr/0003-third-decision.md
+## Status
+
+Accepted
++ head -7 doc/adr/0003-third-decision.md
 # 3. Third Decision
 
 Date: 12/01/1992
 
+## Status
+
+Accepted
