@@ -20,7 +20,7 @@ do
 done
 
 template=${ADR_TEMPLATE:-$(dirname $0)/template.md}
-dstdir=$($(dirname $0)/_adr-dir)
+dstdir=$($(dirname $0)/_adr_dir)
 
 title="$@"
 
@@ -45,7 +45,7 @@ date=${ADR_DATE:-$(date +%d/%m/%Y)}
 
 if [ ! -z $superceded ]
 then
-    superceded_file=$($(dirname $0)/_adr-file $superceded)
+    superceded_file=$($(dirname $0)/_adr_file $superceded)
 fi
 
 mkdir -p $dstdir
@@ -58,9 +58,9 @@ cat $template | sed \
 
 if [ ! -z $superceded ]
 then
-    superceded_file=$($(dirname $0)/_adr-file "$superceded")
-    _adr-update-status $dstfile supercedes $superceded_file
-    _adr-update-status $superceded_file superceded-by $dstfile
+    superceded_file=$($(dirname $0)/_adr_file "$superceded")
+    _adr_update_status $dstfile supercedes $superceded_file
+    _adr_update_status $superceded_file superceded-by $dstfile
 fi
 
 ${VISUAL:-${EDITOR:-true}} $dstfile

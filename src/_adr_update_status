@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-file=$($(dirname $0)/_adr-file "${1:?FILE}")
+file=$($(dirname $0)/_adr_file "${1:?FILE}")
 op=${2:?OP: 'supercedes' or 'superceded-by'}
-other=$($(dirname $0)/_adr-file "${3:?OTHER FILE}")
+other=$($(dirname $0)/_adr_file "${3:?OTHER FILE}")
 
 other_link="$(basename "$other")"
 other_title="$($(dirname $0)/adr-title "$other")"

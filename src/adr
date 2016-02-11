@@ -7,7 +7,7 @@ if [ ! -x $cmd ]
 then
     echo "usage: $0 COMMAND [ARG] ..."
     echo "COMMAND is one of: "
-    $(dirname $0)/_adr-commands | sed 's/^/  /'
+    $(dirname $0)/_adr_commands | sed 's/^/  /'
     exit 1
 fi
 

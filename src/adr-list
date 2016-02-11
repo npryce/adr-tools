@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-adr_dir=$($(dirname $0)/_adr-dir)
+adr_dir=$($(dirname $0)/_adr_dir)
 
 if [ -d $adr_dir ]
 then
