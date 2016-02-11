@@ -16,6 +16,10 @@ Quick Start
 
         adr init
 
+    This will create the first ADR recording that you are using ADRs
+    to record architectural decisions and linking to Michael Nygard's
+    article on the subject.
+
 2. Create a new ADR
 
         adr new Use Node.JS
