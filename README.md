@@ -32,3 +32,6 @@ Quick Start
     ADR 2, and changes the status of ADR 2 to indicate that it is
     superceded by the new ADR.  It then opens the new ADR in your
     editor of choice.
+
+
+See the [tests](tests/) for detailed examples.
