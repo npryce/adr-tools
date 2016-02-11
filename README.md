@@ -6,7 +6,9 @@ A command-line tool for working with [Architecture Decision Records][ADRs] (ADRs
 [![Build Status](https://travis-ci.org/npryce/adr-tools.svg?branch=master)](https://travis-ci.org/npryce/adr-tools)
 
 1. Add the `src/` directory to your PATH.
-2. Use the `adr` command to manage ADRs in your project.
+2. Use the `adr` command to manage ADRs.
+
+ADRs are stored in your project as Markdown files in the `doc/adr` directory.
 
 Quick Start
 -----------
