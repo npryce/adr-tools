@@ -2,7 +2,7 @@ ADR Tools
 =========
 
 Command-line tools for working with
-[Architecture Decision Records](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions) (ADRs).
+[Architecture Decision Records][ADRs] (ADRs).
 
 [![Build Status](https://travis-ci.org/npryce/adr-tools.svg?branch=master)](https://travis-ci.org/npryce/adr-tools)
 
@@ -17,8 +17,8 @@ Quick Start
         adr init
 
     This will create the first ADR recording that you are using ADRs
-    to record architectural decisions and linking to Michael Nygard's
-    article on the subject.
+    to record architectural decisions and linking to 
+    [Michael Nygard's article on the subject][ADRs].
 
 2. Create a new ADR
 
@@ -39,3 +39,5 @@ Quick Start
 
 
 See the [tests](tests/) for detailed examples.
+
+[ADRs]: http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
