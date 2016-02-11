@@ -12,13 +12,13 @@ build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@echo TEST: $*
 	@rm -rf $(dir $@)/$*
 	@mkdir -p $(dir $@)/$*
-	@cd $(dir $@)/$* && \
+	@(cd $(dir $@)/$* && \
 	  PATH=$(abspath src):$(abspath tests):$(PATH) \
 	  ADR_DATE=12/01/1992 \
 	  VISUAL= \
 	  EDITOR= \
 	  PS4='+ ' \
-	    /bin/sh -x $(abspath $<) > $(abspath $@) 2>&1
+	    /bin/sh -x $(abspath $<) > $(abspath $@) 2>&1) || ! cat $@
 
 clean:
 	rm -rf build/
@@ -33,5 +33,5 @@ endif
 
 .PHONY: all clean
 .PRECIOUS: build/tests/%.output
-.DELETE_ON_ERROR: %.diff
+.DELETE_ON_ERROR:
 
