@@ -1,6 +1,24 @@
 #!/bin/bash
 set -e
 
+args=$(getopt s: $*)
+set -- $args
+
+for arg
+do
+    case "$arg"
+    in
+        -s)
+            superceded="$2"
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+    esac
+done
+
 template=${ADR_TEMPLATE:-$(dirname $0)/template.md}
 dstdir=$($(dirname $0)/_adr-dir)
 
@@ -25,6 +43,11 @@ slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:])
 dstfile=$dstdir/$newid-$slug.md
 date=${ADR_DATE:-$(date +%d/%m/%Y)}
 
+if [ ! -z $superceded ]
+then
+    superceded_file=$($(dirname $0)/_adr-file $superceded)
+fi
+
 mkdir -p $dstdir
 cat $template | sed \
     -e "s|NUMBER|$newnum|" \
@@ -32,6 +55,13 @@ cat $template | sed \
     -e "s|DATE|$date|" \
     -e "s|STATUS|Accepted|" \
     > $dstfile
+
+if [ ! -z $superceded ]
+then
+    superceded_file=$($(dirname $0)/_adr-file "$superceded")
+    _adr-update-status $dstfile supercedes $superceded_file
+    _adr-update-status $superceded_file superceded-by $dstfile
+fi
 
 ${VISUAL:-${EDITOR:-true}} $dstfile
 echo $dstfile

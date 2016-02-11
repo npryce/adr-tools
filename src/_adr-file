@@ -1,0 +1,4 @@
+#!/bin/sh
+set -e
+
+adr-list | grep "$1" | head -1
