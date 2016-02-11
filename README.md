@@ -1,8 +1,7 @@
 ADR Tools
 =========
 
-Command-line tools for working with
-[Architecture Decision Records][ADRs] (ADRs).
+A command-line tool for working with [Architecture Decision Records][ADRs] (ADRs).
 
 [![Build Status](https://travis-ci.org/npryce/adr-tools.svg?branch=master)](https://travis-ci.org/npryce/adr-tools)
 
