@@ -1,6 +1,31 @@
 #!/bin/bash
 set -e
 
+## usage: adr new [-s SUPERCEDED] TITLE_TEXT...
+##
+## Creates a new, numbered ADR.  The TITLE_TEXT arguments are concatenated to
+## form the title of the new ADR.  The ADR is opened for editing in the
+## editor specified by the VISUAL or EDITOR environment variable (VISUAL is
+## preferred; EDITOR is used if VISUAL is not set).  After editing, the
+## file name of the ADR is output to stdout, so the command can be used in
+## scripts.
+##
+## Options:
+##
+## -s SUPERCEDED   A reference (number or partial filename) of a previous
+##                 decision that the new decision supercedes. A Markdown link
+##                 to the superceded ADR is inserted into the Status section.
+##                 The status of the superceded ADR is changed to record that
+##                 it has been superceded by the new ADR.
+##
+## E.g. to create a new ADR with the title "Use MySQL Database":
+##
+##     adr new Use MySQL Database
+##
+## E.g. to create a new ADR that supercedes ADR 12:
+##
+##     adr new Use PostgreSQL Database -s 12
+
 args=$(getopt s: $*)
 set -- $args
 

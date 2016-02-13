@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+## usage: adr list
+##
+## Lists the architecture decision records
+
 adr_dir=$($(dirname $0)/_adr_dir)
 
 if [ -d $adr_dir ]

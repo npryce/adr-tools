@@ -6,7 +6,7 @@ op=${2:?OP: 'supercedes' or 'superceded-by'}
 other=$($(dirname $0)/_adr_file "${3:?OTHER FILE}")
 
 other_link="$(basename "$other")"
-other_title="$($(dirname $0)/adr-title "$other")"
+other_title="$($(dirname $0)/_adr_title "$other")"
 
 awk -v other_link="$other_link" -v other_title="$other_title" -v op="$op" '
 BEGIN {

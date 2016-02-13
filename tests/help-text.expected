@@ -1,0 +1,59 @@
++ adr help
+usage: /Users/nat/projects/adr-tools/src/adr-help COMMAND [ARG] ...
+COMMAND is one of: 
+  help
+  init
+  list
+  new
+Run 'adr help COMMAND' for help on a specific command.
+++ _adr_commands
++ for c in '$(_adr_commands)'
++ adr help help
+usage: adr help [COMMAND]
+
+If COMMAND is given, displays help for that command. Otherwise lists
+the available commands.
++ for c in '$(_adr_commands)'
++ adr help init
+usage: adr init
+
+Initialises the directory of architecture decision records:
+
+ * creates a subdirectory of the current working directory named doc/adr
+ * creates the first ADR in that subdirectory, recording the decision to
+   record architectural decisions with ADRs.
++ for c in '$(_adr_commands)'
++ adr help list
+usage: adr list
+
+Lists the architecture decision records
++ for c in '$(_adr_commands)'
++ adr help new
+usage: adr new [-s SUPERCEDED] TITLE_TEXT...
+
+Creates a new, numbered ADR.  The TITLE_TEXT arguments are concatenated to
+form the title of the new ADR.  The ADR is opened for editing in the
+editor specified by the VISUAL or EDITOR environment variable (VISUAL is
+preferred; EDITOR is used if VISUAL is not set).  After editing, the
+file name of the ADR is output to stdout, so the command can be used in
+scripts.
+
+Options:
+
+-s SUPERCEDED   A reference (number or partial filename) of a previous
+                decision that the new decision supercedes. A Markdown link
+                to the superceded ADR is inserted into the Status section.
+                The status of the superceded ADR is changed to record that
+                it has been superceded by the new ADR.
+
+E.g. to create a new ADR with the title "Use MySQL Database":
+
+    adr new Use MySQL Database
+
+E.g. to create a new ADR that supercedes ADR 12:
+
+    adr new Use PostgreSQL Database -s 12
++ adr help nonexistent-command
+grep: /Users/nat/projects/adr-tools/src/adr-nonexistent-command: No such file or directory
++ echo exit status: 0
+exit status: 0

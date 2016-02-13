@@ -1,3 +1,13 @@
 #!/bin/bash
 set -e
-VISUAL=true ADR_TEMPLATE="$(dirname $0)/init.md" adr new record-architecture-decisions
+
+## usage: adr init
+## 
+## Initialises the directory of architecture decision records:
+## 
+##  * creates a subdirectory of the current working directory named doc/adr
+##  * creates the first ADR in that subdirectory, recording the decision to
+##    record architectural decisions with ADRs.
+
+VISUAL=true ADR_TEMPLATE="$(dirname $0)/init.md" \
+      adr new record-architecture-decisions

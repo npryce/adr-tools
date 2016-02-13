@@ -3,12 +3,10 @@ set -e
 
 cmd=$(dirname $0)/adr-$1
 
-if [ ! -x $cmd ]
+if [ -x $cmd ]
 then
-    echo "usage: $0 COMMAND [ARG] ..."
-    echo "COMMAND is one of: "
-    $(dirname $0)/_adr_commands | sed 's/^/  /'
+    $cmd "${@:2}"
+else
+    $(dirname $0)/adr-help
     exit 1
 fi
-
-$cmd "${@:2}"
