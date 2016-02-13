@@ -1,13 +1,14 @@
 ADR Tools
 =========
 
-Command-line tools for working with
-[Architecture Decision Records](http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions) (ADRs).
+A command-line tool for working with [Architecture Decision Records][ADRs] (ADRs).
 
 [![Build Status](https://travis-ci.org/npryce/adr-tools.svg?branch=master)](https://travis-ci.org/npryce/adr-tools)
 
 1. Add the `src/` directory to your PATH.
-2. Use the `adr` command to manage ADRs in your project.
+2. Use the `adr` command to manage ADRs.
+
+ADRs are stored in your project as Markdown files in the `doc/adr` directory.
 
 Quick Start
 -----------
@@ -15,6 +16,10 @@ Quick Start
 1. Create an ADR directory in the root of your project:
 
         adr init
+
+    This will create the first ADR recording that you are using ADRs
+    to record architectural decisions and linking to 
+    [Michael Nygard's article on the subject][ADRs].
 
 2. Create a new ADR
 
@@ -32,3 +37,8 @@ Quick Start
     ADR 2, and changes the status of ADR 2 to indicate that it is
     superceded by the new ADR.  It then opens the new ADR in your
     editor of choice.
+
+
+See the [tests](tests/) for detailed examples.
+
+[ADRs]: http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
