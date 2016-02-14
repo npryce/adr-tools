@@ -35,3 +35,6 @@ Help text can easily be kept up to date as the script is edited.
 There's no automated check that the help text is up to date.  The
 tests do not work well as documentation for users, and the help
 text is not easily cross-checked against the code.
+
+This won't work if any subcommands are not implemented as scripts
+that use '#' as a comment character.

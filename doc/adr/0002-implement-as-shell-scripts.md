@@ -15,7 +15,7 @@ the Status section of existing files.
 
 ## Decision
 
-The tool is implement as shell scripts that use standard Unix
+The tool is implemented as shell scripts that use standard Unix
 tools -- grep, sed, awk, etc.
 
 ## Consequences
