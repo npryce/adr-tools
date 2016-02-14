@@ -21,22 +21,27 @@ Quick Start
     to record architectural decisions and linking to 
     [Michael Nygard's article on the subject][ADRs].
 
-2. Create a new ADR
+2. Create Architecture Decision Records
 
-        adr new Use Node.JS
+        adr new Implement as Unix shell scripts
 
     This will create a new, numbered ADR file and open it in your
     editor of choice (as specified by the VISUAL or EDITOR environment
     variable).
 
-3. Create a new ADR that supercedes a previous one (ADR 2, for example)
+    To create a new ADR that supercedes a previous one (ADR 9, for example),
+    use the -s option.
 
-        adr new Use Rust -s 2
+        adr new Use Rust for performance-critical functionality -s 9
 
     This will create a new ADR file that is flagged as superceding
-    ADR 2, and changes the status of ADR 2 to indicate that it is
+    ADR 9, and changes the status of ADR 9 to indicate that it is
     superceded by the new ADR.  It then opens the new ADR in your
     editor of choice.
+    
+3. For further information, use the built in help:
+
+        adr help
 
 
 See the [tests](tests/) for detailed examples.
