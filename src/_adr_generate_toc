@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+
+bindir="$(dirname $0)"
+
+cat <<EOF 
+# Architecture Decision Records
+
+EOF
+
+for f in $($bindir/adr-list)
+do
+    title=$($bindir/_adr_title $f)
+    link=$(basename $f)
+
+    echo "* [$title]($link)"
+done

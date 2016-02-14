@@ -1,4 +1,4 @@
-# 1. Record Architecture Decisions
+# 1. Record architecture decisions
 
 Date: DATE
 

@@ -1,4 +1,4 @@
-# 2. Implement as Shell Scripts
+# 2. Implement as shell scripts
 
 Date: 12/02/2016
 

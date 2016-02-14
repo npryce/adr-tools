@@ -1,4 +1,4 @@
-# 5. help-comments
+# 5. Help comments
 
 Date: 13/02/2016
 

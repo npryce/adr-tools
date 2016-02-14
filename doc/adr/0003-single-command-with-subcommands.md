@@ -1,4 +1,4 @@
-# 3. Single Command with Subcommands
+# 3. Single command with subcommands
 
 Date: 12/02/2016
 

@@ -1,0 +1,18 @@
+#!/bin/bash
+set -e
+
+## usage: adr generate [REPORT [OPTION ...]]
+##
+## Generates summary documentation about the architecture decision records
+## in Markdown format.
+##
+## The command `adr generate` lists the types of report.
+
+cmd=$1
+
+if [ -z $cmd ]
+then
+    (cd $(dirname $0) && find . -name '_adr_generate_*' -perm +111) | cut -c 17-
+else
+    $(dirname $0)/_adr_generate_$cmd "${@:2}"
+fi
