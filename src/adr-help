@@ -8,13 +8,14 @@ set -e
 
 cmddir=$(dirname $0)
 cmd="$1"
+cmdexe="$cmddir/adr-$cmd"
 
-if [ -z $cmd ]
+if [ -z "$cmd" -o ! -x $cmdexe ]
 then
     echo "usage: $0 COMMAND [ARG] ..."
     echo "COMMAND is one of: "
     $cmddir/_adr_commands | sed 's/^/  /'
     echo "Run 'adr help COMMAND' for help on a specific command."
 else
-    grep -E '^##' "$cmddir/adr-$1" | cut -c 4-
+    grep -E '^##' "$cmdexe" | cut -c 4-
 fi
