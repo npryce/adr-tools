@@ -2,11 +2,38 @@
 set -e
 
 bindir="$(dirname $0)"
+args=$(getopt i:o: $*)
+set -- $args
+
+for arg
+do
+    case "$arg"
+    in
+        -i)
+            intro="$2"
+            shift 2
+            ;;
+        -o)
+            outro="$2"
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+    esac
+done
 
 cat <<EOF 
 # Architecture Decision Records
 
 EOF
+
+if [ ! -z $intro ]
+then
+    cat "$intro"
+    echo
+fi
 
 for f in $($bindir/adr-list)
 do
@@ -15,3 +42,9 @@ do
 
     echo "* [$title]($link)"
 done
+
+if [ ! -z $outro ]
+then
+    echo
+    cat "$outro"
+fi
