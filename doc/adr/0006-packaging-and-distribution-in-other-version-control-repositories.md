@@ -24,7 +24,7 @@ The `adr-tools` project will not contain any packaging or
 distribution scripts and config.
 
 Packaging and distribution will be managed by other projects in
-version control repositories.
+separate version control repositories.
 
 ## Consequences
 
