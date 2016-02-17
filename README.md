@@ -12,7 +12,7 @@ On Mac OS X, you can install with [Homebrew](https://brew.sh):
 
     brew install olleolleolle/adr-tools/adr_tools
     
-Thanks to @olleolleolle.
+Thanks to [Olle Jonsson](https://github.com/olleolleolle).
 
 
 You can install with Git, if you want to be on the bleeding edge:
