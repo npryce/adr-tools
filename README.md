@@ -5,13 +5,29 @@ A command-line tool for working with [Architecture Decision Records][ADRs] (ADRs
 
 [![Build Status](https://travis-ci.org/npryce/adr-tools.svg?branch=master)](https://travis-ci.org/npryce/adr-tools)
 
-1. Add the `src/` directory to your PATH.
-2. Use the `adr` command to manage ADRs.
+Installation
+------------
 
-ADRs are stored in your project as Markdown files in the `doc/adr` directory.
+On Mac OS X, you can install with [Homebrew](https://brew.sh):
+
+    brew install olleolleolle/adr-tools/adr_tools
+    
+Thanks to @olleolleolle.
+
+
+You can install with Git, if you want to be on the bleeding edge:
+
+1. Check out this repository
+2. Add the `src/` subdirectory to your PATH.
+
 
 Quick Start
 -----------
+
+Use the `adr` command to manage ADRs.  Try running `adr help`.
+
+ADRs are stored in your project as Markdown files in the `doc/adr` directory.
+
 
 1. Create an ADR directory in the root of your project:
 
