@@ -1,0 +1,36 @@
++ adr new First Decision
+doc/adr/0001-first-decision.md
++ adr new Second Decision
+doc/adr/0002-second-decision.md
++ adr new Third Decision
+doc/adr/0003-third-decision.md
++ adr new Fourth Decision
+doc/adr/0004-fourth-decision.md
++ adr new Fifth Decision
+doc/adr/0005-fifth-decision.md
++ adr new Sixth Decision
+doc/adr/0006-sixth-decision.md
++ adr new Seventh Decision
+doc/adr/0007-seventh-decision.md
++ adr new Eighth Decision
+doc/adr/0008-eighth-decision.md
++ adr new Ninth Decision
+doc/adr/0009-ninth-decision.md
++ ls doc/adr
+0001-first-decision.md
+0002-second-decision.md
+0003-third-decision.md
+0004-fourth-decision.md
+0005-fifth-decision.md
+0006-sixth-decision.md
+0007-seventh-decision.md
+0008-eighth-decision.md
+0009-ninth-decision.md
++ head -7 doc/adr/0009-ninth-decision.md
+# 9. Ninth Decision
+
+Date: 12/01/1992
+
+## Status
+
+Accepted
