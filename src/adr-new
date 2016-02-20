@@ -44,7 +44,8 @@ do
     esac
 done
 
-template=${ADR_TEMPLATE:-$(dirname $0)/template.md}
+templates_dir=${ADR_TEMPLATES_DIR:-$(dirname $0)}
+template=${ADR_TEMPLATE:-$templates_dir/template.md}
 dstdir=$($(dirname $0)/_adr_dir)
 
 title="$@"
