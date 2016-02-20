@@ -45,6 +45,11 @@ ADRs are stored in your project as Markdown files in the `doc/adr` directory.
 
         adr help
 
+Customizing
+-----------
+
+Set the environment variable ADR_TEMPLATES_DIR to a folder containing two
+files: template.md and init.md.
 
 See the [tests](tests/) for detailed examples.
 
