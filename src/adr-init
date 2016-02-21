@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+source "$(dirname $0)/config.sh"
 
 ## usage: adr init
 ## 
@@ -9,5 +10,5 @@ set -e
 ##  * creates the first ADR in that subdirectory, recording the decision to
 ##    record architectural decisions with ADRs.
 
-VISUAL=true ADR_TEMPLATE="$(dirname $0)/init.md" \
-      adr new record-architecture-decisions
+VISUAL=true ADR_TEMPLATE="$adr_template_dir/init.md" \
+      "$adr_bin_dir/adr-new" record-architecture-decisions

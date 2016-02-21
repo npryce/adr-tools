@@ -1,11 +1,12 @@
 #!/bin/bash
 set -e
+source "$(dirname $0)/config.sh"
 
 ## usage: adr list
 ##
 ## Lists the architecture decision records
 
-adr_dir=$($(dirname $0)/_adr_dir)
+adr_dir=$("$adr_bin_dir/_adr_dir")
 
 if [ -d $adr_dir ]
 then

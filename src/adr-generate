@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+source "$(dirname $0)/config.sh"
 
 ## usage: adr generate [REPORT [OPTION ...]]
 ##
@@ -12,7 +13,7 @@ cmd=$1
 
 if [ -z $cmd ]
 then
-    (cd $(dirname $0) && find . -name '_adr_generate_*' -perm +111) | cut -c 17-
+    (cd "$adr_bin_dir" && find . -name '_adr_generate_*' -perm +111) | cut -c 17-
 else
-    $(dirname $0)/_adr_generate_$cmd "${@:2}"
+    "$adr_bin_dir/_adr_generate_$cmd" "${@:2}"
 fi

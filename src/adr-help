@@ -1,20 +1,20 @@
 #!/bin/bash
 set -e
+source "$(dirname $0)/config.sh"
 
 ## usage: adr help [COMMAND]
 ##
 ## If COMMAND is given, displays help for that command. Otherwise lists
 ## the available commands.
 
-cmddir=$(dirname $0)
 cmd="$1"
-cmdexe="$cmddir/adr-$cmd"
+cmdexe="$adr_bin_dir/adr-$cmd"
 
 if [ -z "$cmd" -o ! -x $cmdexe ]
 then
     echo "usage: $0 COMMAND [ARG] ..."
     echo "COMMAND is one of: "
-    $cmddir/_adr_commands | sed 's/^/  /'
+    $adr_bin_dir/_adr_commands | sed 's/^/  /'
     echo "Run 'adr help COMMAND' for help on a specific command."
 else
     grep -E '^##' "$cmdexe" | cut -c 4-

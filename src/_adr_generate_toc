@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
+source "$(dirname $0)/config.sh"
 
-bindir="$(dirname $0)"
 args=$(getopt i:o: $*)
 set -- $args
 
@@ -35,9 +35,9 @@ then
     echo
 fi
 
-for f in $($bindir/adr-list)
+for f in $("$adr_bin_dir/adr-list")
 do
-    title=$($bindir/_adr_title $f)
+    title=$("$adr_bin_dir/_adr_title" $f)
     link=$(basename $f)
 
     echo "* [$title]($link)"

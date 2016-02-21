@@ -1,3 +1,5 @@
 #!/bin/bash
 set -e
-head -1 $($(dirname $0)/_adr_file "$1") | cut -c 3-
+source "$(dirname $0)/config.sh"
+
+head -1 $("$adr_bin_dir/_adr_file" "$1") | cut -c 3-
