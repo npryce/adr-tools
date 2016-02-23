@@ -25,7 +25,8 @@ source "$(dirname $0)/config.sh"
 ##
 ## E.g. to create a new ADR that supercedes ADR 12:
 ##
-##     adr new Use PostgreSQL Database -s 12
+##     adr new -s 12 Use PostgreSQL Database
+##
 
 args=$(getopt s: $*)
 set -- $args
