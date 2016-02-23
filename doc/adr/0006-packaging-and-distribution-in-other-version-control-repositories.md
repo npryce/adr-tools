@@ -13,7 +13,8 @@ manager.  For example, Ubuntu users use `apt`, RedHat users use
 `yum` and Mac OS X users use [Homebrew](http://brew.sh).
 
 The developers of `adr-tools` don't know how, nor have permissions,
-to use all these packaging and distribution systems. Therefore packaging and distribution should be done by "downstream" parties.
+to use all these packaging and distribution systems. Therefore packaging
+and distribution must be done by "downstream" parties.
 
 The developers of the tool should not favour any one particular
 packaging and distribution solution.
