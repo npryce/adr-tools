@@ -17,7 +17,7 @@ ADRs are stored in your project as Markdown files in the `doc/adr` directory.
 
 1. Create an ADR directory in the root of your project:
 
-        adr init
+        adr init doc/architecture/decisions
 
     This will create the first ADR recording that you are using ADRs
     to record architectural decisions and linking to 
@@ -34,7 +34,7 @@ ADRs are stored in your project as Markdown files in the `doc/adr` directory.
     To create a new ADR that supercedes a previous one (ADR 9, for example),
     use the -s option.
 
-        adr new Use Rust for performance-critical functionality -s 9
+        adr new -s 9 Use Rust for performance-critical functionality
 
     This will create a new ADR file that is flagged as superceding
     ADR 9, and changes the status of ADR 9 to indicate that it is
