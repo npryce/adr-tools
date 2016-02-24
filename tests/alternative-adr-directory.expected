@@ -1,10 +1,12 @@
-+ ADR_DIR=alternative-dir
-+ export ADR_DIR
++ adr init alternative-dir
+alternative-dir/0001-record-architecture-decisions.md
 + adr new Example ADR
-alternative-dir/0001-example-adr.md
+alternative-dir/0002-example-adr.md
 + ls .
 alternative-dir
 + ls alternative-dir
-0001-example-adr.md
+0001-record-architecture-decisions.md
+0002-example-adr.md
 + adr list
-alternative-dir/0001-example-adr.md
+alternative-dir/0001-record-architecture-decisions.md
+alternative-dir/0002-example-adr.md

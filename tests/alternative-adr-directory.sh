@@ -1,6 +1,4 @@
-ADR_DIR=alternative-dir
-export ADR_DIR
-
+adr init alternative-dir
 adr new Example ADR
 
 ls .
