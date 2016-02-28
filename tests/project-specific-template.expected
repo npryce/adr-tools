@@ -1,0 +1,38 @@
++ adr init adrs
+adrs/0001-record-architecture-decisions.md
++ mkdir -p adrs/templates
++ cat
++ adr new Aaa Bbb
+adrs/0002-aaa-bbb.md
++ adr new Ccc Ddd
+adrs/0003-ccc-ddd.md
++ cat adrs/0002-aaa-bbb.md
+# Aaa Bbb
+
+Project specific template!
+
+# Status
+
+Accepted
+
+# Info
+
+ADR Number: 2
+
+Date: 12/01/1992
+
++ cat adrs/0003-ccc-ddd.md
+# Ccc Ddd
+
+Project specific template!
+
+# Status
+
+Accepted
+
+# Info
+
+ADR Number: 3
+
+Date: 12/01/1992
+

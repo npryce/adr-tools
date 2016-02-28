@@ -46,8 +46,16 @@ do
     esac
 done
 
-template=${ADR_TEMPLATE:-"$adr_template_dir/template.md"}
 dstdir=$("$adr_bin_dir/_adr_dir")
+template="$ADR_TEMPLATE"
+if [ -z $template ]
+then
+    template="$dstdir/templates/template.md"
+    if [ ! -f "$template" ]
+    then
+        template="$adr_template_dir/template.md"
+    fi
+fi
 
 title="$@"
 
