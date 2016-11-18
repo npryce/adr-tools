@@ -30,3 +30,9 @@ You can install with Git, if you want to be on the bleeding edge:
 
 1. Clone this repository
 2. Add the `src/` subdirectory to your PATH.
+
+
+Windows 10
+----------
+The scripts work in the Bash on Ubuntu on Windows, the Linux-subsystem that offically supports Linux command line tools.
+Make sure that you have [installed](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) the Linux-subsystem, run 'bash' on the command line and follow the instructions in the "From a Release Package" section above.
