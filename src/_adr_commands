@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
-source "$(dirname $0)/config.sh"
+eval "$($(dirname $0)/adr-config)"
 
 (cd "$adr_bin_dir" && find . -name 'adr-*' -perm /111) | cut -c 7-

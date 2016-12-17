@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-source "$(dirname $0)/config.sh"
+eval "$($(dirname $0)/adr-config)"
 
 file=$("$adr_bin_dir/_adr_file" "${1:?FILE}")
 op=${2:?OP: 'supercedes' or 'superceded-by'}
