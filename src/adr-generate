@@ -13,7 +13,7 @@ cmd=$1
 
 if [ -z $cmd ]
 then
-    (cd "$adr_bin_dir" && find . -name '_adr_generate_*' -perm /111) | cut -c 17-
+    (cd "$adr_bin_dir" && find . -name '_adr_generate_*') | cut -c 17-
 else
     "$adr_bin_dir/_adr_generate_$cmd" "${@:2}"
 fi
