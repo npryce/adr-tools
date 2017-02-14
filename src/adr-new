@@ -76,7 +76,7 @@ fi
 newid=$(printf "%04d" $newnum)
 slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:] | sed -e 's/[^[:alnum:]]*$//' -e 's/^[^[:alnum:]]*//')
 dstfile=$dstdir/$newid-$slug.md
-date=${ADR_DATE:-$(date +%d/%m/%Y)}
+date=${ADR_DATE:-$(date +%F)}
 
 if [ ! -z $superceded ]
 then
