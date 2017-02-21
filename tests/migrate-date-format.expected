@@ -1,17 +1,16 @@
 + adr init
 doc/adr/0001-record-architecture-decisions.md
+++ ADR_DATE=12/01/1992
 ++ adr new With Old Date Format
 + adr_file=doc/adr/0002-with-old-date-format.md
-+ sed -e 's+^Date: .*$+Date: 12/01/1992+' doc/adr/0002-with-old-date-format.md
-+ mv doc/adr/0002-with-old-date-format.md.tmp doc/adr/0002-with-old-date-format.md
 + adr new With Current Date Format
 doc/adr/0003-with-current-date-format.md
-+ grep 'Date: ' doc/adr/0001-record-architecture-decisions.md doc/adr/0002-with-old-date-format.md doc/adr/0003-with-current-date-format.md
++ grep Date: doc/adr/0001-record-architecture-decisions.md doc/adr/0002-with-old-date-format.md doc/adr/0003-with-current-date-format.md
 doc/adr/0001-record-architecture-decisions.md:Date: 1992-01-12
 doc/adr/0002-with-old-date-format.md:Date: 12/01/1992
 doc/adr/0003-with-current-date-format.md:Date: 1992-01-12
 + adr upgrade-repository
-+ grep 'Date: ' doc/adr/0001-record-architecture-decisions.md doc/adr/0002-with-old-date-format.md doc/adr/0003-with-current-date-format.md
++ grep Date: doc/adr/0001-record-architecture-decisions.md doc/adr/0002-with-old-date-format.md doc/adr/0003-with-current-date-format.md
 doc/adr/0001-record-architecture-decisions.md:Date: 1992-01-12
 doc/adr/0002-with-old-date-format.md:Date: 1992-01-12
 doc/adr/0003-with-current-date-format.md:Date: 1992-01-12
