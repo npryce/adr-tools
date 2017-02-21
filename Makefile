@@ -14,7 +14,7 @@ build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@mkdir -p $(dir $@)/$*
 	@(cd $(dir $@)/$* && \
 	  PATH=/bin:/usr/bin:$(abspath src):$(abspath tests) \
-	  ADR_DATE=12/01/1992 \
+	  ADR_DATE=1992-01-12 \
 	  VISUAL= \
 	  EDITOR= \
 	  PS4='+ ' \
@@ -23,15 +23,6 @@ build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 clean:
 	rm -rf build/
 
-ifdef test
-approved: $(patsubst %.sh,build/%.output,$(test))
-	mv $< $(patsubst %.sh,%.expected,$(test))
-else
-approved:
-	@echo usage: make test=TEST_SCRIPT approved
-endif
-
 .PHONY: all clean
 .PRECIOUS: build/tests/%.output
 .DELETE_ON_ERROR:
-
