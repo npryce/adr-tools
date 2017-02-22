@@ -1,0 +1,5 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+sed -n -E 's/^(.+) \[.*\]\(0*([1-9][0-9]*).*\)/\2=\1/p' "$("$adr_bin_dir/_adr_file" "$1")"

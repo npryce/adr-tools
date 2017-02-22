@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+function index() {
+	basename "$1" | sed -e 's/-.*//' | sed -e 's/^0*//'
+}
+
+echo "digraph {"
+echo "  node [shape=plaintext];"
+
+for f in $("$adr_bin_dir/adr-list")
+do
+	n=$(index "$f")
+	title=$("$adr_bin_dir/_adr_title" $f)
+	
+	if [ $n -gt 1 ]
+	then
+		echo "  _$(($n - 1)) -> _$n;"
+	fi
+	
+	echo "  _$n [label=\"$title\"; URL=\"$(basename $f)\"];"
+	
+	"$adr_bin_dir/_adr_links" "$f" | sed -E -e 's/^([0-9]+)=(.+)$/  _'"$n"' -> _\1 [label="\2"]/'
+	
+done
+echo "}"
