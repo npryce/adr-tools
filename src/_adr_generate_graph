@@ -16,10 +16,10 @@ do
 	
 	if [ $n -gt 1 ]
 	then
-		echo "  _$(($n - 1)) -> _$n;"
+		echo "  _$(($n - 1)) -> _$n [style=\"dotted\"];"
 	fi
 	
-	echo "  _$n [label=\"$title\"; URL=\"$(basename $f)\"];"
+	echo "  _$n [label=\"$title\"; URL=\"$(basename $f)\"]"
 	
 	"$adr_bin_dir/_adr_links" "$f" | sed -E -e 's/^([0-9]+)=(.+)$/  _'"$n"' -> _\1 [label="\2"]/'
 	
