@@ -78,11 +78,6 @@ slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:] | sed -e 's
 dstfile=$dstdir/$newid-$slug.md
 date=${ADR_DATE:-$(date +%Y-%m-%d)}
 
-if [ ! -z $superceded ]
-then
-    superceded_file=$("$adr_bin_dir/_adr_file" $superceded)
-fi
-
 mkdir -p $dstdir
 cat $template | sed \
     -e "s|NUMBER|$newnum|" \
