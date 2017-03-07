@@ -1,0 +1,28 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+source=$("$adr_bin_dir/_adr_file" "${1:?SOURCE}")
+link_type="${2:?LINK TYPE}"
+target=$("$adr_bin_dir/_adr_file" "${3:?TARGET}")
+
+target_title="$("$adr_bin_dir/_adr_title" "$target")"
+
+awk -v link_type="$link_type" -v target="$(basename $target)" -v target_title="$target_title" '
+	BEGIN { 
+		in_status_section=0
+	}
+	/^##/ {
+		if (in_status_section) {
+		    print link_type " [" target_title "](" target ")"
+			print ""
+		}
+		in_status_section=0
+	}
+	/^## Status$/ { 
+		in_status_section=1 
+	}
+	{ print }
+' "$source" > "$source.tmp"
+
+mv "$source.tmp" "$source"

@@ -17,8 +17,8 @@ digraph {
   _2 -> _3 [label="Superceded by"]
   _3 [label="3. A better idea"; URL="0003-a-better-idea.html"]
   _2 -> _3 [style="dotted"];
-  _3 -> _5 [label="Superceded by"]
   _3 -> _2 [label="Supercedes"]
+  _3 -> _5 [label="Superceded by"]
   _4 [label="4. This will work"; URL="0004-this-will-work.html"]
   _3 -> _4 [style="dotted"];
   _5 [label="5. The end"; URL="0005-the-end.html"]

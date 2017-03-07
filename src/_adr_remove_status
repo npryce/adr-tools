@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+current_status=${1:?FROM}
+file=$("$adr_bin_dir/_adr_file" "${2:?FILE}")
+
+awk -v current_status="$current_status" '
+	BEGIN { 
+		in_status_section=0 
+	}
+	/^##/ { 
+		in_status_section=0 
+	}
+	/^## Status$/ { 
+		in_status_section=1 
+	}
+	in_status_section && /^\s*$/ {
+		if (!after_blank) print
+		after_blank=1
+		next
+	}
+	in_status_section && $0 == current_status { 
+		next 
+	}
+	in_status_section && ! /^\s*$/ {
+		after_blank=0
+	}
+	{ print }
+' "$file" > "$file.tmp"
+
+mv "$file.tmp" "$file"

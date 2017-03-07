@@ -31,12 +31,13 @@ eval "$($(dirname $0)/adr-config)"
 args=$(getopt s: $*)
 set -- $args
 
+superceded=()
 for arg
 do
     case "$arg"
     in
         -s)
-            superceded="$2"
+            superceded+=("$2")
             shift 2
             ;;
         --)
@@ -86,12 +87,12 @@ cat $template | sed \
     -e "s|STATUS|Accepted|" \
     > $dstfile
 
-if [ ! -z $superceded ]
-then
-    superceded_file=$("$adr_bin_dir/_adr_file" "$superceded")
-    _adr_update_status $dstfile supercedes $superceded_file
-    _adr_update_status $superceded_file superceded-by $dstfile
-fi
+for s in "${superceded[@]}"
+do
+	"$adr_bin_dir/_adr_remove_status" "Accepted" "$s"
+	"$adr_bin_dir/_adr_add_link" "$s" "Superceded by" "$dstfile"
+	"$adr_bin_dir/_adr_add_link" "$dstfile" "Supercedes" "$s"
+done
 
 ${VISUAL:-${EDITOR:-true}} $dstfile
 echo $dstfile
