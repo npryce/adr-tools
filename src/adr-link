@@ -1,0 +1,23 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+## usage: adr link SOURCE LINK TARGET REVERSE-LINK
+##
+## Creates a link between two ADRs, from SOURCE to TARGET new.
+## SOURCE and TARGET are both a reference (number or partial filename) to an ADR
+## LINK is the description of the link created in the SOURCE.
+## REVERSE-LINK is the description of the link created in the TARGET
+##
+## E.g. to create link ADR 12 to ADR 10
+##
+##     adr link 12 Amends 10 "Amended by"
+##
+
+source="${1:?SOURCE}"
+forward_link="${2:?LINK}"
+target="${3:?TARGET}"
+reverse_link="${4:?REVERSE-LINK}"
+
+"$adr_bin_dir/_adr_add_link" "$source" "$forward_link" "$target"
+"$adr_bin_dir/_adr_add_link" "$target" "$reverse_link" "$source"
