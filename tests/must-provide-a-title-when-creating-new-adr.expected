@@ -1,2 +1,5 @@
-+ adr new
+if adr new
+then
+    echo ERROR: should have failed
+fi
 ERROR: no title given

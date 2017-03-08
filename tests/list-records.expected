@@ -1,17 +1,18 @@
-+ adr list
+adr list
 The doc/adr directory does not exist
-+ adr new first
+adr new first
 doc/adr/0001-first.md
-+ adr list
+adr list
 doc/adr/0001-first.md
-+ adr new second
+adr new second
 doc/adr/0002-second.md
-+ adr list
+adr list
 doc/adr/0001-first.md
 doc/adr/0002-second.md
-+ adr new third
+adr new third
 doc/adr/0003-third.md
-+ adr list
+adr list
 doc/adr/0001-first.md
 doc/adr/0002-second.md
 doc/adr/0003-third.md
+

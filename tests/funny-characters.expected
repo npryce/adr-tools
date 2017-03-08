@@ -1,10 +1,10 @@
-+ adr new Something About Node.JS
+adr new Something About Node.JS
 doc/adr/0001-something-about-node-js.md
-+ adr new Slash/Slash/Slash/
+adr new Slash/Slash/Slash/
 doc/adr/0002-slash-slash-slash.md
-+ adr new -- -Bar-
+adr new -- "-Bar-"
 doc/adr/0003-bar.md
-+ ls doc/adr
+ls doc/adr
 0001-something-about-node-js.md
 0002-slash-slash-slash.md
 0003-bar.md

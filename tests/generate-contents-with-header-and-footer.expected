@@ -1,12 +1,18 @@
-+ adr new First Decision
+adr new First Decision
 doc/adr/0001-first-decision.md
-+ adr new Second Decision
+adr new Second Decision
 doc/adr/0002-second-decision.md
-+ adr new Third Decision
+adr new Third Decision
 doc/adr/0003-third-decision.md
-+ cat
-+ cat
-+ adr generate toc -i intro.md -o outro.md
+cat > intro.md <<EOF
+An intro.
+
+Multiple paragraphs.
+EOF
+cat > outro.md <<EOF
+An outro.
+EOF
+adr generate toc -i intro.md -o outro.md
 # Architecture Decision Records
 
 An intro.

@@ -1,12 +1,27 @@
-+ adr init adrs
+adr init adrs
 adrs/0001-record-architecture-decisions.md
-+ mkdir -p adrs/templates
-+ cat
-+ adr new Aaa Bbb
+mkdir -p adrs/templates
+cat > adrs/templates/template.md <<EOF
+# TITLE
+
+Project specific template!
+
+# Status
+
+STATUS
+
+# Info
+
+ADR Number: NUMBER
+
+Date: DATE
+
+EOF
+adr new Aaa Bbb
 adrs/0002-aaa-bbb.md
-+ adr new Ccc Ddd
+adr new Ccc Ddd
 adrs/0003-ccc-ddd.md
-+ cat adrs/0002-aaa-bbb.md
+cat adrs/0002-aaa-bbb.md
 # Aaa Bbb
 
 Project specific template!
@@ -21,7 +36,7 @@ ADR Number: 2
 
 Date: 1992-01-12
 
-+ cat adrs/0003-ccc-ddd.md
+cat adrs/0003-ccc-ddd.md
 # Ccc Ddd
 
 Project specific template!

@@ -1,10 +1,10 @@
-+ adr new First Record
+adr new First Record
 doc/adr/0001-first-record.md
-+ adr new Second Record
+adr new Second Record
 doc/adr/0002-second-record.md
-+ adr new -l 1:Amends:Amended_by -l 2:Clarifies:Clarified_by Third Record
+adr new -l "1:Amends:Amended by" -l "2:Clarifies:Clarified by" Third Record
 doc/adr/0003-third-record.md
-+ head -12 doc/adr/0001-first-record.md
+head -12 doc/adr/0001-first-record.md
 # 1. First Record
 
 Date: 1992-01-12
@@ -13,11 +13,11 @@ Date: 1992-01-12
 
 Accepted
 
-Amended_by [3. Third Record](0003-third-record.md)
+Amended by [3. Third Record](0003-third-record.md)
 
 ## Context
 
-+ head -12 doc/adr/0002-second-record.md
+head -12 doc/adr/0002-second-record.md
 # 2. Second Record
 
 Date: 1992-01-12
@@ -26,11 +26,11 @@ Date: 1992-01-12
 
 Accepted
 
-Clarified_by [3. Third Record](0003-third-record.md)
+Clarified by [3. Third Record](0003-third-record.md)
 
 ## Context
 
-+ head -14 doc/adr/0003-third-record.md
+head -14 doc/adr/0003-third-record.md
 # 3. Third Record
 
 Date: 1992-01-12
