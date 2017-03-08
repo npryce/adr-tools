@@ -48,8 +48,7 @@ links=()
 
 while getopts s:l: arg
 do
-    case "$arg"
-    in
+    case "$arg" in
         s)
             superceded+=("$OPTARG")
             ;;

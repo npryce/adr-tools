@@ -2,6 +2,23 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
+link_extension=.html
+
+while getopts e: arg
+do
+    case "$arg" in
+        e) 
+			link_extension="$OPTARG"
+          	;;
+    	*)
+        	echo "Not implemented: $arg" >&2
+        	exit 1
+        	;;
+	esac
+done
+shift $((OPTIND-1))
+
+
 function index() {
 	basename "$1" | sed -e 's/-.*//' | sed -e 's/^0*//'
 }
@@ -14,7 +31,7 @@ do
 	n=$(index "$f")
 	title=$("$adr_bin_dir/_adr_title" $f)
 	
-	echo "  _$n [label=\"$title\"; URL=\"$(basename $f .md).html\"]"
+	echo "  _$n [label=\"$title\"; URL=\"$(basename $f .md)${link_extension}\"]"
 	if [ $n -gt 1 ]
 	then
 		echo "  _$(($n - 1)) -> _$n [style=\"dotted\"];"
