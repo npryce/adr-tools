@@ -2,6 +2,17 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
+## usage: adr generate toc [-i INTRO] [-o OUTRO]
+##
+## Generates a table of contents in Markdown format to stdout. 
+## 
+## Options:
+##
+## -e INTRO  precede the table of contents with the given INTRO text.
+## -o OUTRO  follow the table of contents with the given OUTRO text.
+##
+## Both INTRO and OUTRO must be in Markdown format.
+
 args=$(getopt i:o: $*)
 set -- $args
 

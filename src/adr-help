@@ -2,17 +2,24 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr help [COMMAND]
+## usage: adr help [COMMAND [SUBCOMMAND...]]
 ##
-## If COMMAND is given, displays help for that command. Otherwise lists
-## the available commands.
+## If COMMAND and any SUBCOMMANDs are given, displays help for that command. 
+## Otherwise lists the available commands.
 
-cmd="$1"
-cmdexe="$adr_bin_dir/adr-$cmd"
+cmds=("$@")
 
-if [ -z "$cmd" -o ! -x $cmdexe ]
+if (( ${#@} == 1 ))
 then
-    echo "usage: $0 COMMAND [ARG] ..."
+	cmdexe="$adr_bin_dir/adr-$1"
+elif (( ${#@} > 1 ))
+then
+	cmdexe="$adr_bin_dir/_adr_$(IFS=_; echo "${cmds[*]}")"
+fi
+
+if [ -z "$cmds" -o ! -x "$cmdexe" ]
+then
+    echo "usage: adr help COMMAND [ARG] ..."
     echo "COMMAND is one of: "
     $adr_bin_dir/_adr_commands | sed 's/^/  /'
     echo "Run 'adr help COMMAND' for help on a specific command."
