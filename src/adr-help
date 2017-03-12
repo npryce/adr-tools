@@ -25,4 +25,17 @@ then
     echo "Run 'adr help COMMAND' for help on a specific command."
 else
     grep -E '^##' "$cmdexe" | cut -c 4-
+	
+	# Assumes only two levels of command / subcommand.
+	subcmds=( $(compgen -G "$adr_bin_dir/_adr_$1_"'*') )
+	
+	if (( ${#subcmds} > 0 ))
+	then
+		echo
+		echo Subcommands:
+		for f in "${subcmds[@]}"
+		do
+			basename $f | cut -c $(( ${#1} + 7 ))-
+		done | sed "s/^/  adr $1 /"
+	fi
 fi
