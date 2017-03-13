@@ -8,7 +8,7 @@ MacOS X
 
 Mac OS X users can install with [Homebrew](https://brew.sh):
 
-    brew install olleolleolle/adr-tools/adr_tools
+    brew install npryce/adr-tools/adr_tools
     
 Thanks to [Olle Jonsson](https://github.com/olleolleolle).
 
