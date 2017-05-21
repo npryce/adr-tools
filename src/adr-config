@@ -1,3 +1,4 @@
+#!/bin/bash
 # Config for when running from the source directory.
 echo 'adr_bin_dir="'"$(dirname $0)"'"'
 echo 'adr_template_dir="'"$(dirname $0)"'"'
