@@ -1,19 +1,19 @@
-# NUMBER. TITLE
+# NUMBER. TITLE <short present tense imperative phrase, less than 50 characters, like a git commit message.>
 
 Date: DATE
 
 ## Status
 
-STATUS
+<proposed, accepted, rejected, deprecated, superseded, etc.>
 
 ## Context
 
-Context here...
+<what is the issue that we're seeing that is motivating this decision or change.>
 
 ## Decision
 
-Decision here...
+<what is the change that we're actually proposing or doing.>
 
 ## Consequences
 
-Consequences here...
+<what becomes easier or more difficult to do because of this change.>
