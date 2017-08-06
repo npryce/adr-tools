@@ -1,10 +1,4 @@
 _adr() {
-  local cur
-  cur=${COMP_WORDS[$COMP_CWORD]}
-
-  local cmd
-  cmd=( ${COMP_WORDS[@]} )
-
   COMPREPLY=( $(_adr_autocomplete ${COMP_WORDS[*]} ) )
 }
 
