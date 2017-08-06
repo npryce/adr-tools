@@ -2,7 +2,7 @@
 eval "$($(dirname $0)/adr-config)"
 
 cmds=("$@")
-available_commands=$( $adr_bin_dir/_adr_commands )
+available_commands=$( $adr_bin_dir/_adr_commands | sort )
 
 if (( ${#@} <= 2))
 then
@@ -14,7 +14,7 @@ then
   fi
 fi
 
-subcmds_files=( $(compgen -G "$adr_bin_dir/_adr_$2_"'*') )
+subcmds_files=( $(compgen -G "$adr_bin_dir/_adr_$2_"'*' | sort ) )
 if (( ${#subcmds_files} > 0 ))
 then
   subcmds=$( for f in "${subcmds_files[@]}"
