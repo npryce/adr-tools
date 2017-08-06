@@ -1,0 +1,10 @@
+_adr_autocomplete adr
+init upgrade-repository help list config new generate link
+_adr_autocomplete adr li
+list link
+_adr_autocomplete adr generate
+toc graph
+_adr_autocomplete adr generate to
+toc
+_adr_autocomplete adr ierhir
+
