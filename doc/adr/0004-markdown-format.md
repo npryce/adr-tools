@@ -13,7 +13,7 @@ The decision records must be stored in a plain text format:
 * This works well with version control systems.
 
 * It allows the tool to modify the status of records and insert
-  hyperlinks when one decision supercedes another.
+  hyperlinks when one decision supersedes another.
 
 * Decisions can be read in the terminal, IDE, version control
   browser, etc.

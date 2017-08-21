@@ -11,7 +11,7 @@ Date: 1992-01-12
 
 ## Status
 
-Superceded by [3. Third Record](0003-third-record.md)
+Superseded by [3. Third Record](0003-third-record.md)
 
 head -8 doc/adr/0002-second-record.md
 # 2. Second Record
@@ -20,7 +20,7 @@ Date: 1992-01-12
 
 ## Status
 
-Superceded by [3. Third Record](0003-third-record.md)
+Superseded by [3. Third Record](0003-third-record.md)
 
 head -12 doc/adr/0003-third-record.md
 # 3. Third Record
@@ -31,7 +31,7 @@ Date: 1992-01-12
 
 Accepted
 
-Supercedes [1. First Record](0001-first-record.md)
+Supersedes [1. First Record](0001-first-record.md)
 
-Supercedes [2. Second Record](0002-second-record.md)
+Supersedes [2. Second Record](0002-second-record.md)
 
