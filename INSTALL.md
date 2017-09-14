@@ -35,6 +35,6 @@ The scripts work in the Bash on Ubuntu on Windows, the Linux-subsystem that offi
 Make sure that you have [installed](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) the Linux-subsystem, run 'bash' on the command line and follow the instructions in the "From a Release Package" section above.
 
 
-Aucomplete
+Autocomplete
 ----------
 In order to have autocomplete on the commands, add the `autocomplete/adr` script to your `/etc/bash_autocomplete.d` or the equivalent to your platform.
