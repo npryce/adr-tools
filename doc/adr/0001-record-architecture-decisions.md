@@ -17,3 +17,7 @@ We will use Architecture Decision Records, as described by Michael Nygard in thi
 ## Consequences
 
 See Michael Nygard's article, linked above.
+We accept the drawbacks that
+(i) it is not enforced that a justification is stated and
+(ii) it is not enforced that considered other options are listed.
+In other templates such as the [Y-Statements](https://www.infoq.com/articles/sustainable-architectural-design-decisions) or [MADR](https://adr.github.io/madr/), these drawbacks are not present.
