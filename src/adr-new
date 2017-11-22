@@ -101,9 +101,10 @@ date=${ADR_DATE:-$(date +%Y-%m-%d)}
 mkdir -p $dstdir
 cat $template | sed \
     -e "s|NUMBER|$newnum|" \
-    -e "s|TITLE|$title|" \
+    -e "s|TITLE.*|$title|" \
     -e "s|DATE|$date|" \
     -e "s|STATUS|Accepted|" \
+    -e "s|<proposed, accepted, rejected, deprecated, superseded, etc.>|Accepted|" \
     > $dstfile
 
 for target in "${superceded[@]}"
