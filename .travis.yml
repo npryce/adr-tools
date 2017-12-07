@@ -1,5 +1,9 @@
 language: bash
 
+os:
+  - linux
+  - osx
+
 script: make clean check
 
 sudo: false
