@@ -1,6 +1,6 @@
 # 8. Use ISO 8601 Format for Dates
 
-Date: 21/02/2017
+Date: 2017-02-21
 
 ## Status
 

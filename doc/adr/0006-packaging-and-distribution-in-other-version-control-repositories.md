@@ -1,6 +1,6 @@
 # 6. Packaging and distribution in other version control repositories
 
-Date: 16/02/2016
+Date: 2016-02-16
 
 ## Status
 

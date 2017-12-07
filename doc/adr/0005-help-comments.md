@@ -1,6 +1,6 @@
 # 5. Help comments
 
-Date: 13/02/2016
+Date: 2016-02-13
 
 ## Status
 

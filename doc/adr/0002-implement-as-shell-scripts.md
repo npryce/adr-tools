@@ -1,6 +1,6 @@
 # 2. Implement as shell scripts
 
-Date: 12/02/2016
+Date: 2016-02-12
 
 ## Status
 

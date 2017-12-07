@@ -1,6 +1,6 @@
 # 3. Single command with subcommands
 
-Date: 12/02/2016
+Date: 2016-02-12
 
 ## Status
 

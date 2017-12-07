@@ -1,6 +1,6 @@
 # 7. Invoke adr-config executable to get configuration
 
-Date: 17/12/2016
+Date: 2016-12-17
 
 ## Status
 
