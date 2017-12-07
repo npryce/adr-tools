@@ -11,6 +11,12 @@ eval "$($(dirname $0)/adr-config)"
 ## file name of the ADR is output to stdout, so the command can be used in
 ## scripts.
 ##
+## If the ADR directory contains a file named `template.md`, this is used as
+## the template for the new ADR.  Otherwise a default template is used that
+## follows the style described by Michael Nygard in this article:
+##
+##   http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
+##
 ## Options:
 ##
 ## -s SUPERCEDED   A reference (number or partial filename) of a previous
