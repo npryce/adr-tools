@@ -8,10 +8,7 @@ MacOS X
 
 Mac OS X users can install with [Homebrew](https://brew.sh):
 
-    brew install olleolleolle/adr-tools/adr_tools
-    
-Thanks to [Olle Jonsson](https://github.com/olleolleolle).
-
+    brew install adr-tools
 
 From a Release Package
 ----------------------
@@ -36,3 +33,8 @@ Windows 10
 ----------
 The scripts work in the Bash on Ubuntu on Windows, the Linux-subsystem that offically supports Linux command line tools.
 Make sure that you have [installed](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide) the Linux-subsystem, run 'bash' on the command line and follow the instructions in the "From a Release Package" section above.
+
+
+Autocomplete
+----------
+In order to have autocomplete on the commands, add the `autocomplete/adr` script to your `/etc/bash_autocomplete.d` or the equivalent to your platform.
