@@ -1,26 +1,23 @@
 #!/bin/bash
 set -e
 eval "$($(dirname $0)/adr-config)"
-
+date=${ADR_DATE:-$(date +%Y-%m-%d)}
 source=$("$adr_bin_dir/_adr_file" "${1:?SOURCE}")
 link_type="${2:?LINK TYPE}"
 target=$("$adr_bin_dir/_adr_file" "${3:?TARGET}")
 
 target_title="$("$adr_bin_dir/_adr_title" "$target")"
-
-awk -v link_type="$link_type" -v target="$(basename $target)" -v target_title="$target_title" '
+updated_status="| $date | $link_type [$target_title]($(basename $target)) |"
+awk -v updated_status="$updated_status" '
 	BEGIN { 
 		in_status_section=0
 	}
-	/^##/ {
-		if (in_status_section) {
-		    print link_type " ["target_title"](" target ")"
-			print ""
-		}
-		in_status_section=0
+	/^\|.*\|$/ {
+        in_status_section=1
 	}
-	/^## Status$/ { 
-		in_status_section=1 
+	in_status_section && /^\s*$/ {
+        print updated_status
+		in_status_section=0 
 	}
 	{ print }
 ' "$source" > "$source.tmp"

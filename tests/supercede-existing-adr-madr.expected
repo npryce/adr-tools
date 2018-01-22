@@ -1,0 +1,30 @@
+adr init docs madr
+docs/0001-record-architecture-decisions.md
+adr new First Record
+docs/0002-first-record.md
+adr new -s 2 Second Record
+docs/0003-second-record.md
+head -10 docs/0002-first-record.md
+# First Record
+
+| Date | Status |
+| -- | -- |
+| 1992-01-12 | Accepted |
+| 1992-01-12 | Superceded by [Second Record](0003-second-record.md) |
+
+User Story: [ticket/issue-number] <!-- optional -->
+
+[context and problem statement]
+head -12 docs/0003-second-record.md
+# Second Record
+
+| Date | Status |
+| -- | -- |
+| 1992-01-12 | Accepted |
+| 1992-01-12 | Supercedes [First Record](0002-first-record.md) |
+
+User Story: [ticket/issue-number] <!-- optional -->
+
+[context and problem statement]
+[decision drivers | forces | facing] <!-- optional -->
+

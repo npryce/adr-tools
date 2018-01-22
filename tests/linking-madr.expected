@@ -1,0 +1,51 @@
+adr init docs madr
+docs/0001-record-architecture-decisions.md
+adr new First Record
+docs/0002-first-record.md
+adr new Second Record
+docs/0003-second-record.md
+adr new Third Record
+docs/0004-third-record.md
+adr link 4 Amends 2 "Amended by"
+adr link 4 Clarifies 3 "Clarified by"
+head -12 docs/0002-first-record.md
+# First Record
+
+| Date | Status |
+| -- | -- |
+| 1992-01-12 | Accepted |
+| 1992-01-12 | Amended by [Third Record](0004-third-record.md) |
+
+User Story: [ticket/issue-number] <!-- optional -->
+
+[context and problem statement]
+[decision drivers | forces | facing] <!-- optional -->
+
+head -12 docs/0003-second-record.md
+# Second Record
+
+| Date | Status |
+| -- | -- |
+| 1992-01-12 | Accepted |
+| 1992-01-12 | Clarified by [Third Record](0004-third-record.md) |
+
+User Story: [ticket/issue-number] <!-- optional -->
+
+[context and problem statement]
+[decision drivers | forces | facing] <!-- optional -->
+
+head -14 docs/0004-third-record.md
+# Third Record
+
+| Date | Status |
+| -- | -- |
+| 1992-01-12 | Accepted |
+| 1992-01-12 | Amends [First Record](0002-first-record.md) |
+| 1992-01-12 | Clarifies [Second Record](0003-second-record.md) |
+
+User Story: [ticket/issue-number] <!-- optional -->
+
+[context and problem statement]
+[decision drivers | forces | facing] <!-- optional -->
+
+## Considered Options

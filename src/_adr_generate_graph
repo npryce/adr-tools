@@ -61,7 +61,7 @@ do
 	then
 		echo "  _$(($n - 1)) -> _$n [style=\"dotted\"];"
 	fi
-	
+
 	"$adr_bin_dir/_adr_links" "$f" | sed -E -e 's/^([0-9]+)=(.+)$/  _'"$n"' -> _\1 [label="\2"]/'
 done
 echo "}"

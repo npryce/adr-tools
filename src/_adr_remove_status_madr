@@ -1,0 +1,6 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+#This is empty because madr doesn't actually remove a status ever, but this dummy is necessary because of how superceding is handled
+
+
