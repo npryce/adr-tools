@@ -1,0 +1,13 @@
+adr new 99 Luft Balloons
+doc/adr/0001-99-luft-balloons.md
+adr new Song 2
+doc/adr/0002-song-2.md
+adr new 1999
+doc/adr/0003-1999.md
+adr new 9 to 5
+doc/adr/0004-9-to-5.md
+ls doc/adr
+0001-99-luft-balloons.md
+0002-song-2.md
+0003-1999.md
+0004-9-to-5.md

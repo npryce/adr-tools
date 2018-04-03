@@ -93,14 +93,14 @@ fi
 
 if [ -d $dstdir ]
 then
-    maxid=$(ls $dstdir | grep -Eo '^[0-9]+' | sed -e 's/^0*//' | sort -rn | head -1)
+    maxid=$(ls $dstdir | awk '{ match($0, /^([0-9]+)/); id=substr($0, RSTART, RLENGTH); print id; }' | sed -e 's/^0*//' | sort -rn | head -1)
     newnum=$(($maxid + 1))
 else
     newnum=1
 fi
 
 newid=$(printf "%04d" $newnum)
-slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:] | sed -e 's/[^[:alnum:]]*$//' -e 's/^[^[:alnum:]]*//')
+slug=$(echo -n $title | tr -cs [:alnum:] - | tr [:upper:] [:lower:] | sed -e 's/[^[:alnum:]]*$//' -e 's/^[^[:alnum:]]*//')
 dstfile=$dstdir/$newid-$slug.md
 date=${ADR_DATE:-$(date +%Y-%m-%d)}
 
