@@ -14,18 +14,18 @@ ls docs
 head -8 docs/0003-second-decision.md
 # Second Decision
 
-| Date | Status |
-| -- | -- |
-| 1992-01-12 | Accepted |
+* Status: Accepted
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
 
-User Story: [ticket/issue-number] <!-- optional -->
+Technical Story: [description | ticket/issue URL] <!-- optional -->
 
 head -8 docs/0004-third-decision.md
 # Third Decision
 
-| Date | Status |
-| -- | -- |
-| 1992-01-12 | Accepted |
+* Status: Accepted
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
 
-User Story: [ticket/issue-number] <!-- optional -->
+Technical Story: [description | ticket/issue URL] <!-- optional -->
 

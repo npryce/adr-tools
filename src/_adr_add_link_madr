@@ -7,19 +7,26 @@ link_type="${2:?LINK TYPE}"
 target=$("$adr_bin_dir/_adr_file" "${3:?TARGET}")
 
 target_title="$("$adr_bin_dir/_adr_title" "$target")"
-updated_status="| $date | $link_type [$target_title]($(basename $target)) |"
-awk -v updated_status="$updated_status" '
-	BEGIN { 
-		in_status_section=0
-	}
-	/^\|.*\|$/ {
-        in_status_section=1
-	}
-	in_status_section && /^\s*$/ {
-        print updated_status
-		in_status_section=0 
-	}
-	{ print }
-' "$source" > "$source.tmp"
+updated_status="$link_type [$target_title]($(basename $target))"
 
-mv "$source.tmp" "$source"
+if [ "$link_type" != "Supercedes" ] 
+then
+awk -v n=3 -v s="* Status: $updated_status" '(NR==n) { print s }{ print } ' "$source" > "$source.tmp" && mv "$source.tmp" "$source"
+fi
+
+if [ "$link_type" == "Superceded by" ]
+then
+sed -e "s/\* Date:.*/\* Date: $date/" "$source" > "$source.tmp" && mv "$source.tmp" "$source"
+fi
+
+if grep -q "## Links" "$source"; then
+    cat <<EOT >> "$source"
+* $updated_status
+EOT
+else
+    cat <<EOT >> "$source"
+## Links
+
+* $updated_status
+EOT
+fi

@@ -6,34 +6,22 @@ adr new Second Record
 docs/0003-second-record.md
 adr new -s 2 -s 3 Third Record
 docs/0004-third-record.md
-head -8 docs/0002-first-record.md
+head -5 docs/0002-first-record.md
 # First Record
 
-| Date | Status |
-| -- | -- |
-| 1992-01-12 | Accepted |
-| 1992-01-12 | Superceded by [Third Record](0004-third-record.md) |
-
-User Story: [ticket/issue-number] <!-- optional -->
-head -8 docs/0003-second-record.md
+* Status: Superceded by [Third Record](0004-third-record.md)
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+head -5 docs/0003-second-record.md
 # Second Record
 
-| Date | Status |
-| -- | -- |
-| 1992-01-12 | Accepted |
-| 1992-01-12 | Superceded by [Third Record](0004-third-record.md) |
+* Status: Superceded by [Third Record](0004-third-record.md)
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+tail -6 docs/0004-third-record.md
+## Links <!-- optional -->
 
-User Story: [ticket/issue-number] <!-- optional -->
-head -12 docs/0004-third-record.md
-# Third Record
-
-| Date | Status |
-| -- | -- |
-| 1992-01-12 | Accepted |
-| 1992-01-12 | Supercedes [First Record](0002-first-record.md) |
-| 1992-01-12 | Supercedes [Second Record](0003-second-record.md) |
-
-User Story: [ticket/issue-number] <!-- optional -->
-
-[context and problem statement]
-[decision drivers | forces | facing] <!-- optional -->
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Supercedes [First Record](0002-first-record.md)
+* Supercedes [Second Record](0003-second-record.md)

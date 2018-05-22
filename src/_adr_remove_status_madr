@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 eval "$($(dirname $0)/adr-config)"
-#This is empty because madr doesn't actually remove a status ever, but this dummy is necessary because of how superceding is handled
 
-
+current_status=${1:?FROM}
+file=$("$adr_bin_dir/_adr_file" "${2:?FILE}")
+pattern="* Status: $current_status"
+sed -n "/\* Status: $current_status/!p" "$file" > temp && mv temp "$file"

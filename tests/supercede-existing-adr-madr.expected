@@ -7,24 +7,17 @@ docs/0003-second-record.md
 head -10 docs/0002-first-record.md
 # First Record
 
-| Date | Status |
-| -- | -- |
-| 1992-01-12 | Accepted |
-| 1992-01-12 | Superceded by [Second Record](0003-second-record.md) |
+* Status: Superceded by [Second Record](0003-second-record.md)
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
 
-User Story: [ticket/issue-number] <!-- optional -->
+Technical Story: [description | ticket/issue URL] <!-- optional -->
 
-[context and problem statement]
-head -12 docs/0003-second-record.md
-# Second Record
+## Context and Problem Statement
 
-| Date | Status |
-| -- | -- |
-| 1992-01-12 | Accepted |
-| 1992-01-12 | Supercedes [First Record](0002-first-record.md) |
+tail -5 docs/0003-second-record.md
+## Links <!-- optional -->
 
-User Story: [ticket/issue-number] <!-- optional -->
-
-[context and problem statement]
-[decision drivers | forces | facing] <!-- optional -->
-
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Supercedes [First Record](0002-first-record.md)

@@ -130,11 +130,12 @@ case $type in
     -e "s|STATUS|Accepted|" \
     > $dstfile
     ;;
-# Date and Status are not contained in template, but should be added when ADR is created
     madr)
-    cat $template | sed -e "s/\[short title of solved problem and solution\]/$title/" > $tempfile
-    awk -v n=2 -v s="\n| Date | Status |\n| -- | -- |\n| $date | Accepted |" 'NR == n {print s} {print}' $tempfile > $dstfile
-    rm $tempfile
+    cat $template | sed \
+    -e "s/\[short title of solved problem and solution\]/$title/" \
+    -e "s/\* Status: \[accepted | superseeded by \[ADR-0005\](0005-example.md) | deprecated | …\] <!-- optional -->/\* Status: Accepted/" \
+    -e "s/\* Date: \[YYYY-MM-DD when the decision was last updated\] <!-- optional -->/\* Date: $date/" \
+    > $dstfile
     ;;
 esac
 
