@@ -1,0 +1,3 @@
+ln -s ../../../src/adr adr
+./adr | head -1
+usage: adr help COMMAND [ARG] ...
