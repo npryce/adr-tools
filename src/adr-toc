@@ -14,47 +14,4 @@ adr_contents="0000-contents.md"
 ##
 ## Both INTRO and OUTRO must be in Markdown format.
 
-args=$(getopt i:o: $*)
-set -- $args
-
-for arg
-do
-    case "$arg"
-    in
-        -i)
-            intro="$2"
-            shift 2
-            ;;
-        -o)
-            outro="$2"
-            shift 2
-            ;;
-        --)
-            shift
-            break
-            ;;
-    esac
-done
-
-echo "# Architecture Decision Records" > "$adr_dir/$adr_contents"
-echo >> "$adr_dir/$adr_contents"
-
-if [ ! -z $intro ]
-then
-    echo $intro > "$adr_dir/$adr_contents"
-    echo > "$adr_dir/$adr_contents"
-fi
-
-for f in $("$adr_bin_dir/adr-list")
-do
-    title=$("$adr_bin_dir/_adr_title" $f)
-    link=$(basename $f)
-
-    echo "* [$title]($link)"
-done | grep -v "$adr_contents" >> "$adr_dir/$adr_contents"
-
-if [ ! -z $outro ]
-then
-    echo > "$adr_dir/$adr_contents"
-	echo $outro > "$adr_dir/$adr_contents"
-fi
+("$adr_bin_dir/adr-generate" toc) | grep -v "$adr_contents" > "$adr_dir/$adr_contents"
