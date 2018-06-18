@@ -28,7 +28,7 @@ eval "$($(dirname $0)/adr-config)"
 
 
 link_extension=.html
-
+template_type=$("$adr_bin_dir/_adr_type")
 while getopts e: arg
 do
     case "$arg" in
@@ -45,7 +45,7 @@ shift $((OPTIND-1))
 
 
 function index() {
-	basename "$1" | sed -e 's/-.*//' | sed -e 's/^0*//'
+	basename "$1" | sed -e 's/-.*//' | sed -e 's/^0//' | sed -e 's/^0//' | sed -e 's/^0//'
 }
 
 echo "digraph {"
@@ -57,11 +57,23 @@ do
 	title=$("$adr_bin_dir/_adr_title" $f)
 	
 	echo "  _$n [label=\"$title\"; URL=\"$(basename $f .md)${link_extension}\"]"
+    case $template_type in
+    "")
 	if [ $n -gt 1 ]
 	then
 		echo "  _$(($n - 1)) -> _$n [style=\"dotted\"];"
 	fi
 
 	"$adr_bin_dir/_adr_links" "$f" | sed -E -e 's/^([0-9]+)=(.+)$/  _'"$n"' -> _\1 [label="\2"]/'
+    ;;
+    madr)
+	if [ $n -gt 0 ]
+	then
+		echo "  _$(($n - 1)) -> _$n [style=\"dotted\"];"
+	fi
+
+	"$adr_bin_dir/_adr_links" "$f" | sed -E -e 's/^([0-9]+)=(.+)$/  _'"$n"' -> _\1 [label="\2"]/'
+    ;;    
+esac
 done
 echo "}"

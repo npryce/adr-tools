@@ -1,17 +1,17 @@
 adr init docs madr
-docs/0001-record-architecture-decisions.md
+docs/0000-record-architecture-decisions.md
 adr new First Decision
-docs/0002-first-decision.md
+docs/0001-first-decision.md
 adr new Second Decision
-docs/0003-second-decision.md
+docs/0002-second-decision.md
 adr new Third Decision
-docs/0004-third-decision.md
+docs/0003-third-decision.md
 ls docs
-0001-record-architecture-decisions.md
-0002-first-decision.md
-0003-second-decision.md
-0004-third-decision.md
-head -8 docs/0003-second-decision.md
+0000-record-architecture-decisions.md
+0001-first-decision.md
+0002-second-decision.md
+0003-third-decision.md
+head -8 docs/0002-second-decision.md
 # Second Decision
 
 * Status: Accepted
@@ -20,7 +20,7 @@ head -8 docs/0003-second-decision.md
 
 Technical Story: [description | ticket/issue URL] <!-- optional -->
 
-head -8 docs/0004-third-decision.md
+head -8 docs/0003-third-decision.md
 # Third Decision
 
 * Status: Accepted

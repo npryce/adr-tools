@@ -1,8 +1,8 @@
 adr init docs madr
-docs/0001-record-architecture-decisions.md
+docs/0000-record-architecture-decisions.md
 adr new The First Decision
-docs/0002-the-first-decision.md
-cat docs/0002-the-first-decision.md
+docs/0001-the-first-decision.md
+cat docs/0001-the-first-decision.md
 # The First Decision
 
 * Status: Accepted
@@ -32,11 +32,13 @@ Technical Story: [description | ticket/issue URL] <!-- optional -->
 
 Chosen option: "[option 1]", because [justification. e.g., only option, which meets k.o. criterion decision driver | which resolves force force | … | comes out best (see below)].
 
-Positive Consequences: <!-- optional -->
+### Positive Consequences: <!-- optional -->
+
 * [e.g., improvement of quality attribute satisfaction, follow-up decisions required, …]
 * …
 
-Negative consequences: <!-- optional -->
+### Negative consequences: <!-- optional -->
+
 * [e.g., compromising quality attribute, follow-up decisions required, …]
 * …
 

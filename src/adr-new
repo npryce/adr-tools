@@ -102,26 +102,38 @@ then
     exit 1
 fi
 
+#newnum=0
+
 if [ -d $dstdir ]
 then
-    maxid=$(ls $dstdir | grep -Eo '^[0-9]+' | sed -e 's/^0*//' | sort -rn | head -1)
+filecount=$(ls $dstdir | grep -Eo '^[0-9]+' | wc -l)
+    maxid=$(ls $dstdir | grep -Eo '^[0-9]+' | sed -e 's/^0//' | sed -e 's/^0//'| sed -e 's/^0//' | sort -rn | head -1)
     newnum=$(($maxid + 1))
+    if [ -z $maxid ]
+    then
+    newnum_madr=0
+    else    
+    newnum_madr=$(($maxid + 1))
+fi
 else
     newnum=1
+    newnum_madr=0
 fi
 
-newid=$(printf "%04d" $newnum)
+if [ -z $template_type ]
+then
+    newid=$(printf "%04d" $newnum)    
+else
+    newid=$(printf "%04d" $newnum_madr)
+fi
 slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:] | sed -e 's/[^[:alnum:]]*$//' -e 's/^[^[:alnum:]]*//')
 dstfile=$dstdir/$newid-$slug.md
 date=${ADR_DATE:-$(date +%Y-%m-%d)}
-
 mkdir -p $dstdir
-
-type=$("$adr_bin_dir/_adr_type")
 
 tempfile=$dstdir/.tempfile
 
-case $type in
+case $template_type in
     "")
     cat $template | sed \
     -e "s|NUMBER|$newnum|" \
@@ -139,6 +151,7 @@ case $type in
     ;;
 esac
 
+type=$("$adr_bin_dir/_adr_type")
 if [ -z $type ]
 then
     type_suffix=""
