@@ -1,0 +1,32 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+date=${ADR_DATE:-$(date +%Y-%m-%d)}
+source=$("$adr_bin_dir/_adr_file" "${1:?SOURCE}")
+link_type="${2:?LINK TYPE}"
+target=$("$adr_bin_dir/_adr_file" "${3:?TARGET}")
+
+target_title="$("$adr_bin_dir/_adr_title" "$target")"
+updated_status="$link_type [$target_title]($(basename $target))"
+
+if [ "$link_type" != "Supercedes" ] 
+then
+awk -v n=3 -v s="* Status: $updated_status" '(NR==n) { print s }{ print } ' "$source" > "$source.tmp" && mv "$source.tmp" "$source"
+fi
+
+if [ "$link_type" == "Superceded by" ]
+then
+sed -e "s/\* Date:.*/\* Date: $date/" "$source" > "$source.tmp" && mv "$source.tmp" "$source"
+fi
+
+if grep -q "## Links" "$source"; then
+    cat <<EOT >> "$source"
+* $updated_status
+EOT
+else
+    cat <<EOT >> "$source"
+## Links
+
+* $updated_status
+EOT
+fi

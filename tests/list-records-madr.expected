@@ -1,0 +1,17 @@
+adr list
+The doc/adr directory does not exist
+adr init docs madr
+docs/0000-record-architecture-decisions.md
+adr list
+docs/0000-record-architecture-decisions.md
+adr new first
+docs/0001-first.md
+adr list
+docs/0000-record-architecture-decisions.md
+docs/0001-first.md
+adr new second
+docs/0002-second.md
+adr list
+docs/0000-record-architecture-decisions.md
+docs/0001-first.md
+docs/0002-second.md

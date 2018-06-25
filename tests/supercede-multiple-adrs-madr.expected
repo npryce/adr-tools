@@ -1,0 +1,27 @@
+adr init docs madr
+docs/0000-record-architecture-decisions.md
+adr new First Record
+docs/0001-first-record.md
+adr new Second Record
+docs/0002-second-record.md
+adr new -s 1 -s 2 Third Record
+docs/0003-third-record.md
+head -5 docs/0001-first-record.md
+# First Record
+
+* Status: Superceded by [Third Record](0003-third-record.md)
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+head -5 docs/0002-second-record.md
+# Second Record
+
+* Status: Superceded by [Third Record](0003-third-record.md)
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+tail -6 docs/0003-third-record.md
+## Links <!-- optional -->
+
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Supercedes [First Record](0001-first-record.md)
+* Supercedes [Second Record](0002-second-record.md)

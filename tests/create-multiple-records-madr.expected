@@ -1,0 +1,31 @@
+adr init docs madr
+docs/0000-record-architecture-decisions.md
+adr new First Decision
+docs/0001-first-decision.md
+adr new Second Decision
+docs/0002-second-decision.md
+adr new Third Decision
+docs/0003-third-decision.md
+ls docs
+0000-record-architecture-decisions.md
+0001-first-decision.md
+0002-second-decision.md
+0003-third-decision.md
+head -8 docs/0002-second-decision.md
+# Second Decision
+
+* Status: Accepted
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+
+Technical Story: [description | ticket/issue URL] <!-- optional -->
+
+head -8 docs/0003-third-decision.md
+# Third Decision
+
+* Status: Accepted
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+
+Technical Story: [description | ticket/issue URL] <!-- optional -->
+

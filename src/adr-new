@@ -73,14 +73,25 @@ done
 shift $((OPTIND-1))
 
 dstdir=$("$adr_bin_dir/_adr_dir")
+template_type=$("$adr_bin_dir/_adr_type")
 template="$ADR_TEMPLATE"
 if [ -z $template ]
 then
-    template="$dstdir/templates/template.md"
-    if [ ! -f "$template" ]
+    if [ -d "$dstdir/templates" ]
     then
-        template="$adr_template_dir/template.md"
+        template="$dstdir/templates/template.md"
+    else 
+        template="$dstdir/template.md"
     fi
+        if [ ! -f "$template" ]
+        then
+            if [ -z $template_type ]
+            then
+                template="$adr_template_dir/template.md"
+            else
+                template="$adr_template_dir/template-$template_type.md"        
+            fi
+        fi
 fi
 
 title="$@"
@@ -91,42 +102,78 @@ then
     exit 1
 fi
 
+#newnum=0
+
 if [ -d $dstdir ]
 then
-    maxid=$(ls $dstdir | grep -Eo '^[0-9]+' | sed -e 's/^0*//' | sort -rn | head -1)
+filecount=$(ls $dstdir | grep -Eo '^[0-9]+' | wc -l)
+    maxid=$(ls $dstdir | grep -Eo '^[0-9]+' | sed -e 's/^0//' | sed -e 's/^0//'| sed -e 's/^0//' | sort -rn | head -1)
     newnum=$(($maxid + 1))
+    if [ -z $maxid ]
+    then
+    newnum_madr=0
+    else    
+    newnum_madr=$(($maxid + 1))
+fi
 else
     newnum=1
+    newnum_madr=0
 fi
 
-newid=$(printf "%04d" $newnum)
+if [ -z $template_type ]
+then
+    newid=$(printf "%04d" $newnum)    
+else
+    newid=$(printf "%04d" $newnum_madr)
+fi
 slug=$(echo -n $title | tr -Ccs [:alnum:] - | tr [:upper:] [:lower:] | sed -e 's/[^[:alnum:]]*$//' -e 's/^[^[:alnum:]]*//')
 dstfile=$dstdir/$newid-$slug.md
 date=${ADR_DATE:-$(date +%Y-%m-%d)}
-
 mkdir -p $dstdir
-cat $template | sed \
+
+tempfile=$dstdir/.tempfile
+
+case $template_type in
+    "")
+    cat $template | sed \
     -e "s|NUMBER|$newnum|" \
     -e "s|TITLE|$title|" \
     -e "s|DATE|$date|" \
     -e "s|STATUS|Accepted|" \
     > $dstfile
+    ;;
+    madr)
+    cat $template | sed \
+    -e "s/\[short title of solved problem and solution\]/$title/" \
+    -e "s/\* Status: \[accepted | superseeded by \[ADR-0005\](0005-example.md) | deprecated | …\] <!-- optional -->/\* Status: Accepted/" \
+    -e "s/\* Date: \[YYYY-MM-DD when the decision was last updated\] <!-- optional -->/\* Date: $date/" \
+    > $dstfile
+    ;;
+esac
+
+type=$("$adr_bin_dir/_adr_type")
+if [ -z $type ]
+then
+    type_suffix=""
+else
+    type_suffix="_$type"
+fi
 
 for target in "${superceded[@]}"
 do
-	"$adr_bin_dir/_adr_add_link" "$target" "Superceded by" "$dstfile"
-	"$adr_bin_dir/_adr_remove_status" "Accepted" "$target"
-	"$adr_bin_dir/_adr_add_link" "$dstfile" "Supercedes" "$target"
+    "$adr_bin_dir/_adr_add_link$type_suffix" "$target" "Superceded by" "$dstfile"
+    "$adr_bin_dir/_adr_remove_status$type_suffix" "Accepted" "$target"
+    "$adr_bin_dir/_adr_add_link$type_suffix" "$dstfile" "Supercedes" "$target"
 done
 
 for l in "${links[@]}"
 do
-	target="$(echo $l | cut -d : -f 1)"
-	forward_link="$(echo $l | cut -d : -f 2)"
-	reverse_link="$(echo $l | cut -d : -f 3)"
-	
-	"$adr_bin_dir/_adr_add_link" "$dstfile" "$forward_link" "$target"
-	"$adr_bin_dir/_adr_add_link" "$target" "$reverse_link" "$dstfile"
+    target="$(echo $l | cut -d : -f 1)"
+    forward_link="$(echo $l | cut -d : -f 2)"
+    reverse_link="$(echo $l | cut -d : -f 3)"
+
+    "$adr_bin_dir/_adr_add_link$type_suffix" "$dstfile" "$forward_link" "$target"
+    "$adr_bin_dir/_adr_add_link$type_suffix" "$target" "$reverse_link" "$dstfile"
 done
 
 ${VISUAL:-${EDITOR:-true}} $dstfile

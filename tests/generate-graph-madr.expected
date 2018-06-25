@@ -1,0 +1,46 @@
+adr init docs madr
+docs/0000-record-architecture-decisions.md
+adr new An idea that seems good at the time
+docs/0001-an-idea-that-seems-good-at-the-time.md
+adr new -s 1 A better idea
+docs/0002-a-better-idea.md
+adr new This will work
+docs/0003-this-will-work.md
+adr new -s 3 The end
+docs/0004-the-end.md
+# with default extension in links
+adr generate graph
+digraph {
+  node [shape=plaintext];
+  _0 [label="Use Markdown Architectural Decision Records"; URL="0000-record-architecture-decisions.html"]
+  _1 [label="An idea that seems good at the time"; URL="0001-an-idea-that-seems-good-at-the-time.html"]
+  _0 -> _1 [style="dotted"];
+  _1 -> _2 [label="Superceded by"]
+  _2 [label="A better idea"; URL="0002-a-better-idea.html"]
+  _1 -> _2 [style="dotted"];
+  _2 -> _1 [label="Supercedes"]
+  _3 [label="This will work"; URL="0003-this-will-work.html"]
+  _2 -> _3 [style="dotted"];
+  _3 -> _4 [label="Superceded by"]
+  _4 [label="The end"; URL="0004-the-end.html"]
+  _3 -> _4 [style="dotted"];
+  _4 -> _3 [label="Supercedes"]
+}
+# with specified extension in links
+adr generate graph -e .xxx
+digraph {
+  node [shape=plaintext];
+  _0 [label="Use Markdown Architectural Decision Records"; URL="0000-record-architecture-decisions.xxx"]
+  _1 [label="An idea that seems good at the time"; URL="0001-an-idea-that-seems-good-at-the-time.xxx"]
+  _0 -> _1 [style="dotted"];
+  _1 -> _2 [label="Superceded by"]
+  _2 [label="A better idea"; URL="0002-a-better-idea.xxx"]
+  _1 -> _2 [style="dotted"];
+  _2 -> _1 [label="Supercedes"]
+  _3 [label="This will work"; URL="0003-this-will-work.xxx"]
+  _2 -> _3 [style="dotted"];
+  _3 -> _4 [label="Superceded by"]
+  _4 [label="The end"; URL="0004-the-end.xxx"]
+  _3 -> _4 [style="dotted"];
+  _4 -> _3 [label="Supercedes"]
+}

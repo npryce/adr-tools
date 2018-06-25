@@ -1,0 +1,29 @@
+adr init docs madr
+docs/0000-record-architecture-decisions.md
+adr new First Record
+docs/0001-first-record.md
+adr new Second Record
+docs/0002-second-record.md
+adr new Third Record
+docs/0003-third-record.md
+adr link 3 Amends 1 "Amended by"
+adr link 3 Clarifies 2 "Clarified by"
+tail -5 docs/0001-first-record.md
+## Links <!-- optional -->
+
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Amended by [Third Record](0003-third-record.md)
+tail -5 docs/0002-second-record.md
+## Links <!-- optional -->
+
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Clarified by [Third Record](0003-third-record.md)
+tail -6 docs/0003-third-record.md
+## Links <!-- optional -->
+
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Amends [First Record](0001-first-record.md)
+* Clarifies [Second Record](0002-second-record.md)
