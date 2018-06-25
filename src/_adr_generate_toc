@@ -8,7 +8,7 @@ eval "$($(dirname $0)/adr-config)"
 ## 
 ## Options:
 ##
-## -e INTRO  precede the table of contents with the given INTRO text.
+## -i INTRO  precede the table of contents with the given INTRO text.
 ## -o OUTRO  follow the table of contents with the given OUTRO text.
 ##
 ## Both INTRO and OUTRO must be in Markdown format.
