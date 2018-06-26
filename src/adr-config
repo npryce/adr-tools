@@ -1,4 +1,7 @@
 #!/bin/bash
 # Config for when running from the source directory.
-echo 'adr_bin_dir="'"$(dirname $0)"'"'
-echo 'adr_template_dir="'"$(dirname $0)"'"'
+
+basedir=$(cd -L $(dirname $0) >/dev/null 2>&1 && pwd -L)
+
+echo 'adr_bin_dir="'"${basedir}"'"'
+echo 'adr_template_dir="'"${basedir}"'"'
