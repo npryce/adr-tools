@@ -17,14 +17,21 @@ then
 	cmdexe="$adr_bin_dir/_adr_$(IFS=_; echo "${cmds[*]}")"
 fi
 
-if [ -z "$cmds" -o ! -x "$cmdexe" ]
+helpexe="$adr_bin_dir/_adr_help_$(IFS=_; echo "${cmds[*]}")"
+
+if [ -z "$cmds" -o ! -x "$cmdexe" -o ! -x "$helpexe" ]
 then
     echo "usage: adr help COMMAND [ARG] ..."
     echo "COMMAND is one of: "
     $adr_bin_dir/_adr_commands | sed 's/^/  /'
     echo "Run 'adr help COMMAND' for help on a specific command."
 else
-    grep -E '^##' "$cmdexe" | cut -c 4-
+	if [ -x "$helpexe" ]
+	then
+		"$helpexe"
+	else
+		grep -E '^##' "$cmdexe" | cut -c 4-
+	fi
 	
 	# Assumes only two levels of command / subcommand.
 	subcmds=( $(compgen -G "$adr_bin_dir/_adr_$1_"'*') )
