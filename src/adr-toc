@@ -1,0 +1,17 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+adr_dir=$("$adr_bin_dir/_adr_dir")
+adr_contents="0000-contents.md"
+## usage: adr toc [-i INTRO] [-o OUTRO]
+##
+## Generates a table of contents in Markdown format to contents.md file in the adr folder.
+##
+## Options:
+##
+## -e INTRO  precede the table of contents with the given INTRO text.
+## -o OUTRO  follow the table of contents with the given OUTRO text.
+##
+## Both INTRO and OUTRO must be in Markdown format.
+
+("$adr_bin_dir/adr-generate" toc) | grep -v "$adr_contents" > "$adr_dir/$adr_contents"
