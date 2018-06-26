@@ -4,7 +4,9 @@ eval "$($(dirname $0)/adr-config)"
 
 ## usage: adr generate [REPORT [OPTION ...]]
 ##
-## Generates summary documentation about the architecture decision records.
+## Generates summary documentation about the architecture decision records
+## that is typically fed into the tool chain for publishing a project's 
+## documentatation.
 ##
 ## To list the report types that can be generated, run:
 ##
