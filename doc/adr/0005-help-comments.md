@@ -6,6 +6,8 @@ Date: 2016-02-13
 
 Accepted
 
+Amended by [9. Help scripts](0009-help-scripts.md)
+
 ## Context
 
 The tool will have a `help` subcommand to provide documentation
