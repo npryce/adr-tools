@@ -2,7 +2,7 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr generate toc [-i INTRO] [-o OUTRO] [-r]
+## usage: adr generate toc [-i INTRO] [-o OUTRO] [-p PATH]
 ##
 ## Generates a table of contents in Markdown format to stdout.
 ##
@@ -10,11 +10,11 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ## -i INTRO  precede the table of contents with the given INTRO text.
 ## -o OUTRO  follow the table of contents with the given OUTRO text.
-## -r        use full relative path to decision files, as determined by adr-list.
+## -p PATH   prefix each decision file link with the given PATH.
 ##
 ## Both INTRO and OUTRO must be in Markdown format.
 
-args=$(getopt i:o:r $*)
+args=$(getopt i:o:p: $*)
 set -- $args
 
 for arg
@@ -29,9 +29,9 @@ do
             outro="$2"
             shift 2
             ;;
-        -r)
-            relative=true
-            shift 1
+        -p)
+            path_prefix="$2"
+            shift 2
             ;;
         --)
             shift
@@ -54,7 +54,7 @@ fi
 for f in $("$adr_bin_dir/adr-list")
 do
     title=$("$adr_bin_dir/_adr_title" $f)
-    link=$([ "$relative" = true ] && echo "$f" || echo $(basename $f))
+    link=$([ ! -z $path_prefix ] && echo "$path_prefix/")$(basename $f)
 
     echo "* [$title]($link)"
 done
