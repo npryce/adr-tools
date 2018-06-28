@@ -17,6 +17,8 @@ eval "$($(dirname $0)/adr-config)"
 ##         The file extension of the documents to which generated links refer. 
 ##         Defaults to `.html`.
 ##
+## -r ROOT The root to preppend to the document file names in links.
+## 
 ## E.g. to generate a graph visualisation of decision records in SVG format:
 ##
 ##     adr generate graph | dot -Tsvg > graph.svg
@@ -26,15 +28,18 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ##    adr generate graph -e .pdf | dot -Tpdf > graph.pdf
 
-
+link_root=
 link_extension=.html
 
-while getopts e: arg
+while getopts e:r: arg
 do
     case "$arg" in
         e) 
 			link_extension="$OPTARG"
           	;;
+		r)
+			link_root="$OPTARG"
+			;;
     	*)
         	echo "Not implemented: $arg" >&2
         	exit 1
@@ -56,7 +61,7 @@ do
 	n=$(index "$f")
 	title=$("$adr_bin_dir/_adr_title" $f)
 	
-	echo "  _$n [label=\"$title\"; URL=\"$(basename $f .md)${link_extension}\"]"
+	echo "  _$n [label=\"$title\"; URL=\"${link_root}$(basename $f .md)${link_extension}\"]"
 	if [ $n -gt 1 ]
 	then
 		echo "  _$(($n - 1)) -> _$n [style=\"dotted\"];"
