@@ -2,18 +2,19 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr generate toc [-i INTRO] [-o OUTRO]
+## usage: adr generate toc [-i INTRO] [-o OUTRO] [-p PATH]
 ##
-## Generates a table of contents in Markdown format to stdout. 
-## 
+## Generates a table of contents in Markdown format to stdout.
+##
 ## Options:
 ##
 ## -i INTRO  precede the table of contents with the given INTRO text.
 ## -o OUTRO  follow the table of contents with the given OUTRO text.
+## -p PATH   prefix each decision file link with the given PATH.
 ##
 ## Both INTRO and OUTRO must be in Markdown format.
 
-args=$(getopt i:o: $*)
+args=$(getopt i:o:p: $*)
 set -- $args
 
 for arg
@@ -28,6 +29,10 @@ do
             outro="$2"
             shift 2
             ;;
+        -p)
+            path_prefix="$2"
+            shift 2
+            ;;
         --)
             shift
             break
@@ -35,7 +40,7 @@ do
     esac
 done
 
-cat <<EOF 
+cat <<EOF
 # Architecture Decision Records
 
 EOF
@@ -49,7 +54,7 @@ fi
 for f in $("$adr_bin_dir/adr-list")
 do
     title=$("$adr_bin_dir/_adr_title" $f)
-    link=$(basename $f)
+    link=$([ ! -z $path_prefix ] && echo "$path_prefix/")$(basename $f)
 
     echo "* [$title]($link)"
 done
