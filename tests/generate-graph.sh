@@ -6,4 +6,4 @@ adr new -s 3 The end
 # with default root and extension in links
 adr generate graph
 # with specified root and extension in links
-adr generate graph -r http://example.com/ -e .xxx
+adr generate graph -p http://example.com/ -e .xxx

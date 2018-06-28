@@ -27,7 +27,7 @@ digraph {
   _5 -> _3 [label="Supercedes"]
 }
 # with specified root and extension in links
-adr generate graph -r http://example.com/ -e .xxx
+adr generate graph -p http://example.com/ -e .xxx
 digraph {
   node [shape=plaintext];
   _1 [label="1. Record architecture decisions"; URL="http://example.com/0001-record-architecture-decisions.xxx"]

@@ -2,7 +2,7 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr generate graph [-e LINK-EXTENSION]
+## usage: adr generate graph [-p LINK_PREFIX] [-e LINK-EXTENSION]
 ##
 ## Generates a visualisation of the links between decision records in
 ## Graphviz format.  This can be piped into the graphviz tools to 
@@ -14,10 +14,11 @@ eval "$($(dirname $0)/adr-config)"
 ## Options:
 ##
 ## -e LINK-EXTENSION 
-##         The file extension of the documents to which generated links refer. 
+##         the file extension of the documents to which generated links refer. 
 ##         Defaults to `.html`.
-##
-## -r ROOT The root to preppend to the document file names in links.
+## 
+## -p LINK_PREFIX 
+##         prefix each decision file link with LINK_PREFIX.
 ## 
 ## E.g. to generate a graph visualisation of decision records in SVG format:
 ##
@@ -28,17 +29,17 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ##    adr generate graph -e .pdf | dot -Tpdf > graph.pdf
 
-link_root=
+link_prefix=
 link_extension=.html
 
-while getopts e:r: arg
+while getopts e:p: arg
 do
     case "$arg" in
         e) 
 			link_extension="$OPTARG"
           	;;
-		r)
-			link_root="$OPTARG"
+		p)
+			link_prefix="$OPTARG"
 			;;
     	*)
         	echo "Not implemented: $arg" >&2
@@ -61,7 +62,7 @@ do
 	n=$(index "$f")
 	title=$("$adr_bin_dir/_adr_title" $f)
 	
-	echo "  _$n [label=\"$title\"; URL=\"${link_root}$(basename $f .md)${link_extension}\"]"
+	echo "  _$n [label=\"$title\"; URL=\"${link_prefix}$(basename $f .md)${link_extension}\"]"
 	if [ $n -gt 1 ]
 	then
 		echo "  _$(($n - 1)) -> _$n [style=\"dotted\"];"
