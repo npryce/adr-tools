@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+
+dir=$(dirname "$(readlink -f "$0")")
+eval "$("${dir}"/adr-config)"
 
 cmd=$adr_bin_dir/adr-$1
 
