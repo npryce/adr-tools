@@ -4,6 +4,6 @@ eval "$($(dirname $0)/adr-config)"
 
 awk '
 /^## Status/,/^#/ && !/^## Status/ { 
-	if (!/^#/) print 
+	if (!/^#/ && !/^\s*$/) print 
 }
 ' "$("$adr_bin_dir/_adr_file" "$1")"
