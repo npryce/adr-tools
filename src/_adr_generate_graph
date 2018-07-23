@@ -57,17 +57,24 @@ function index() {
 echo "digraph {"
 echo "  node [shape=plaintext];"
 
+echo "  subgraph {"
 for f in $("$adr_bin_dir/adr-list")
 do
 	n=$(index "$f")
 	title=$("$adr_bin_dir/_adr_title" $f)
 	
-	echo "  _$n [label=\"$title\"; URL=\"${link_prefix}$(basename $f .md)${link_extension}\"]"
+	echo "    _$n [label=\"$title\"; URL=\"${link_prefix}$(basename $f .md)${link_extension}\"];"
 	if [ $n -gt 1 ]
 	then
-		echo "  _$(($n - 1)) -> _$n [style=\"dotted\"];"
+		echo "    _$(($n - 1)) -> _$n [style=\"dotted\", weight=1];"
 	fi
-	
-	"$adr_bin_dir/_adr_links" "$f" | sed -E -e 's/^([0-9]+)=(.+)$/  _'"$n"' -> _\1 [label="\2"]/'
 done
+echo "  }"
+
+for f in $("$adr_bin_dir/adr-list")
+do
+	n=$(index "$f")
+	"$adr_bin_dir/_adr_links" "$f" | grep -Ev " by$" | sed -E -e 's/^([0-9]+)=(.+)$/  _'"$n"' -> _\1 [label="\2", weight=0]/;'
+done
+
 echo "}"
