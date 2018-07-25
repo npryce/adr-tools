@@ -5,4 +5,4 @@ test="${1:?test}"
 
 test_name=$(basename $test | sed 's/\..*//')
 
-cp -v build/tests/$test_name.output tests/$test_name.expected
+cp -v /tmp/adr-tools-build/tests/$test_name.output tests/$test_name.expected

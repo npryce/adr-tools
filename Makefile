@@ -2,13 +2,17 @@
 TESTS:=$(wildcard tests/*.sh)
 SRC:=$(wildcard src/*)
 
-check: $(TESTS:tests/%.sh=build/tests/%.diff)
+# Run tests outside the project directory so that they cannot interfere with the project's
+# own ADR directory
+BUILDDIR:=/tmp/adr-tools-build
+
+check: $(TESTS:tests/%.sh=$(BUILDDIR)/tests/%.diff)
 	@echo SUCCESS
 
-build/tests/%.diff: build/tests/%.output tests/%.expected
+$(BUILDDIR)/tests/%.diff: $(BUILDDIR)/tests/%.output tests/%.expected
 	@diff --side-by-side $^ > $@ || ! cat $@
 
-build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
+$(BUILDDIR)/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@echo TEST: $*
 	@rm -rf $(dir $@)/$*
 	@mkdir -p $(dir $@)/$*
@@ -21,8 +25,11 @@ build/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	    /bin/sh -v $(abspath $<) > $(abspath $@) 2>&1) || ! cat $@
 
 clean:
-	rm -rf build/
+	rm -rf /tmp/adr-tools-build
+
+show-%:
+	@echo "$* ($(flavor $*)) = $($*)"
 
 .PHONY: all clean
-.PRECIOUS: build/tests/%.output
+.PRECIOUS: $(BUILDDIR)/tests/%.output
 .DELETE_ON_ERROR:
