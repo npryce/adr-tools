@@ -3,20 +3,20 @@ Installation
 
 
 
-MacOS X
--------
+Homebrew (MacOS X)
+------------------
 
 Mac OS X users can install with [Homebrew](https://brew.sh):
 
     brew install adr-tools
 
-ASDF-VM
--------
+ASDF-VM (Linux, MacOS X)
+------------------------
 
 ADR-Tools can be installed from the [ASDF-VM version manager](https://github.com/asdf-vm/asdf).
 
-From a Release Package
-----------------------
+From a Release Package (Linux, MacOS X)
+---------------------------------------
 
 You can install a released package:
 
@@ -25,8 +25,8 @@ You can install a released package:
 3. Add the 'src/' subdirectory to your PATH
 
 
-From Git
---------
+From Git (Linux, MacOS X)
+-------------------------
 
 You can install with Git, if you want to be on the bleeding edge:
 
