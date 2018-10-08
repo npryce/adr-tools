@@ -39,8 +39,7 @@ Windows 10
 
 ### Git for Windows: git bash
 
-When using git bash within [Git for Windows](https://git-for-windows.github.io/), the scripts can simply be put in `usr\bin` in the installation directory.
-That directory usually is `C:\Program Files\Git\usr\bin`.
+When using git bash within [Git for Windows](https://git-for-windows.github.io/), the scripts can simply be put in `usr\bin` in the installation directory.  That directory usually is `C:\Program Files\Git\usr\bin`.  Pottery expects to run in a standard POSIX environment, so you must also install `more` or set the `PAGER` environment variable to `less`.
 
 1. Download a zip package from the [releases page](https://github.com/npryce/adr-tools/releases)
 2. Unzip the package
