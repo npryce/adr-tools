@@ -56,10 +56,17 @@ fi
 
 for f in $("$adr_bin_dir/adr-list")
 do
-    title=$("$adr_bin_dir/_adr_title" $f)
+    status=$($adr_bin_dir/_adr_status $f)
+    comment=""
+    if [[ ${status^^} =~ ^DEPRECATED ]] || [[ ${status^^} =~ ^SUPERCEDED ]]; then
+        title="~~$("$adr_bin_dir/_adr_title" $f)~~"
+        comment=" _($status)_"
+    else
+        title=$("$adr_bin_dir/_adr_title" $f)
+    fi
     link=${link_prefix}$(basename $f)
 
-    echo "* [$title]($link)"
+    echo "* [$title]($link)$comment"
 done
 
 if [ ! -z $outro ]
