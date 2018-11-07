@@ -60,7 +60,7 @@ do
     comment=""
     if [[ ${status^^} =~ ^DEPRECATED ]] || [[ ${status^^} =~ ^SUPERCEDED ]]; then
         title="~~$("$adr_bin_dir/_adr_title" $f)~~"
-        comment=" _($status)_"
+        comment=" _(${status/](/](${link_prefix}})_"
     else
         title=$("$adr_bin_dir/_adr_title" $f)
     fi
