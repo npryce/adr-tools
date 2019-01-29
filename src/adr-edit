@@ -1,0 +1,38 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+## usage: adr edit [ADR_NUMBER]
+
+## The last ADR, or the specified ADR NUMBER, is opened for
+## editing in the editor specified by the VISUAL or EDITOR
+## environment variable (VISUAL is preferred; EDITOR is
+## used if VISUAL is not set).
+
+if [ ! -z "$1" ]
+then
+   editid=$(printf "%04d" $1)
+fi
+
+if [[ -z "$VISUAL" && -z "$EDITOR" ]]
+then
+   echo "ERROR: editor not configured"
+   exit 1
+fi
+
+dstdir=$("$adr_bin_dir/_adr_dir")
+
+if [[ -d $dstdir && -z "$editid" ]]
+then
+    editid=$(ls $dstdir | grep -Eo '^[0-9]+' | sort -rn | head -1)
+fi
+
+dstfile=$dstdir/$editid-*.md
+
+if [ -e $dstfile ]
+then
+   ${VISUAL:-${EDITOR:-true}} $dstfile
+else
+   echo "ERROR: ADR $editid not found"
+   exit 1
+fi 
