@@ -10,15 +10,16 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ## -i INTRO  precede the table of contents with the given INTRO text.
 ## -o OUTRO  follow the table of contents with the given OUTRO text.
-## -p LINK_PREFIX   
+## -p LINK_PREFIX
 ##           prefix each decision file link with LINK_PREFIX.
 ##
 ## Both INTRO and OUTRO must be in Markdown format.
 
-args=$(getopt i:o:p: $*)
+args=$(getopt i:o:p:s $*)
 set -- $args
 
 link_prefix=
+output_status=
 
 for arg
 do
@@ -35,6 +36,10 @@ do
         -p)
             link_prefix="$2"
             shift 2
+            ;;
+        -s)
+            output_status=1
+            shift
             ;;
         --)
             shift
@@ -58,8 +63,9 @@ for f in $("$adr_bin_dir/adr-list")
 do
     title=$("$adr_bin_dir/_adr_title" $f)
     link=${link_prefix}$(basename $f)
+    status=${output_status:+": $("$adr_bin_dir/_adr_status" $f | tail -n 1)"}
 
-    echo "* [$title]($link)"
+    echo -e "* [$title]($link)$status"
 done
 
 if [ ! -z $outro ]
