@@ -13,7 +13,7 @@ function absdir() {
 	(cd $(dirname $1) && pwd -P)
 }
 
-while [ $(absdir $reldir) != / ]
+while [ "$(absdir $reldir)" != "/" ]
 do
 	if [ -f $(mkrel .adr-dir) ]
 	then
