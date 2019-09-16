@@ -20,7 +20,7 @@ when you initialise the ADR log.
 
         adr init doc/architecture/decisions
 
-    This will create a directory named `doc/architecture/decisions' 
+    This will create a directory named `doc/architecture/decisions` 
     containing the first ADR, which records that you are using ADRs
     to record architectural decisions and links to 
     [Michael Nygard's article on the subject][ADRs].
