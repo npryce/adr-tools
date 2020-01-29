@@ -1,0 +1,11 @@
+adr new The First Decision
+doc/adr/0001-the-first-decision.md
+adr new The Second Decision
+doc/adr/0002-the-second-decision.md
+adr new The Third Decision
+doc/adr/0003-the-third-decision.md
+if adr new -n 2 The Fourth Decision
+then
+    echo ERROR: should have failed
+fi
+ERROR: ADR number 2 already exists
