@@ -117,14 +117,10 @@ then
     fi
 fi
 
-if [ -d $dstdir ]
+if ls $dstdir/0*$newnum-* 1>/dev/null 2>&1
 then
-    existingadr=$(ls $dstdir | grep -Eo '^0*'$newnum'\D' | sed -e 's/^0*//')
-    if [ -n "$existingadr" ]
-    then
-        echo "ERROR: ADR number $newnum already exists"
-        exit 1
-    fi
+    echo "ERROR: ADR number $newnum already exists"
+    exit 1
 fi
 
 newid=$(printf "%04d" $newnum)
