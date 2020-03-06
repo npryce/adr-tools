@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Config for when running from the source directory.
 
 basedir=$(cd -L $(dirname $0) >/dev/null 2>&1 && pwd -L)
