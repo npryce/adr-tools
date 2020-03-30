@@ -17,7 +17,7 @@ $(BUILDDIR)/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@rm -rf $(dir $@)/$*
 	@mkdir -p $(dir $@)/$*
 	@(cd $(dir $@)/$* && \
-	  PATH=/bin:/usr/bin:$(abspath src):$(abspath tests) \
+		PATH=$(abspath src):$(abspath tests):$$PATH \
 	  ADR_DATE=1992-01-12 \
 	  VISUAL= \
 	  EDITOR= \

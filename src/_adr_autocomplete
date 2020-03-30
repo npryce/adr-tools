@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 eval "$($(dirname $0)/adr-config)"
 
 cmds=("$@")
