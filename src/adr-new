@@ -2,7 +2,7 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr new [-s SUPERCEDED] [-l TARGET:LINK:REVERSE-LINK] TITLE_TEXT...
+## usage: adr new [-s SUPERSEDED] [-l TARGET:LINK:REVERSE-LINK] TITLE_TEXT...
 ##
 ## Creates a new, numbered ADR.  The TITLE_TEXT arguments are concatenated to
 ## form the title of the new ADR.  The ADR is opened for editing in the
@@ -19,21 +19,21 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ## Options:
 ##
-## -s SUPERCEDED   A reference (number or partial filename) of a previous
+## -s SUPERSEDED   A reference (number or partial filename) of a previous
 ##                 decision that the new decision supersedes. A Markdown link
 ##                 to the superseded ADR is inserted into the Status section.
 ##                 The status of the superseded ADR is changed to record that
 ##                 it has been superseded by the new ADR.
 ##
 ## -l TARGET:LINK:REVERSE-LINK
-##                 Links the new ADR to a previous ADR.  
-##                 TARGET is a reference (number or partial filename) of a 
-##                 previous decision. 
+##                 Links the new ADR to a previous ADR.
+##                 TARGET is a reference (number or partial filename) of a
+##                 previous decision.
 ##                 LINK is the description of the link created in the new ADR.
 ##                 REVERSE-LINK is the description of the link created in the
 ##                 existing ADR that will refer to the new ADR.
 ##
-## Multiple -s and -l options can be given, so that the new ADR can supersede 
+## Multiple -s and -l options can be given, so that the new ADR can supersede
 ## or link to multiple existing ADRs.
 ##
 ## E.g. to create a new ADR with the title "Use MySQL Database":
@@ -114,9 +114,9 @@ cat $template | sed \
 
 for target in "${superseded[@]}"
 do
-	"$adr_bin_dir/_adr_add_link" "$target" "Superceded by" "$dstfile"
+	"$adr_bin_dir/_adr_add_link" "$target" "Superseded by" "$dstfile"
 	"$adr_bin_dir/_adr_remove_status" "Accepted" "$target"
-	"$adr_bin_dir/_adr_add_link" "$dstfile" "Supercedes" "$target"
+	"$adr_bin_dir/_adr_add_link" "$dstfile" "Supersedes" "$target"
 done
 
 for l in "${links[@]}"
@@ -124,7 +124,7 @@ do
 	target="$(echo $l | cut -d : -f 1)"
 	forward_link="$(echo $l | cut -d : -f 2)"
 	reverse_link="$(echo $l | cut -d : -f 3)"
-	
+
 	"$adr_bin_dir/_adr_add_link" "$dstfile" "$forward_link" "$target"
 	"$adr_bin_dir/_adr_add_link" "$target" "$reverse_link" "$dstfile"
 done
