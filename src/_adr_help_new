@@ -19,7 +19,7 @@ the template for the new ADR.  Otherwise the following file is used:
 
 This template follows the style described by Michael Nygard in this article.
 
-  http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
+  http://blog.cognitect.com/2011/11/15/documenting-architecture-decisions.html
 
 Options:
 
