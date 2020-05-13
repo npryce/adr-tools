@@ -14,7 +14,6 @@ $(BUILDDIR)/tests/%.diff: $(BUILDDIR)/tests/%.output tests/%.expected
 
 $(BUILDDIR)/tests/%.output: tests/%.sh tests/%.expected $(SRC)
 	@echo TEST: $*
-	@rm -rf $(dir $@)/$*
 	@mkdir -p $(dir $@)/$*
 	@(cd $(dir $@)/$* && \
 	  PATH=/bin:/usr/bin:$(abspath src):$(abspath tests) \
