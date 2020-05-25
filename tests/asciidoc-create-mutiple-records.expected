@@ -1,0 +1,27 @@
+echo "adoc" > .adr-file-type
+adr new First Decision
+doc/adr/0001-first-decision.adoc
+adr new Second Decision
+doc/adr/0002-second-decision.adoc
+adr new Third Decision
+doc/adr/0003-third-decision.adoc
+ls doc/adr
+0001-first-decision.adoc
+0002-second-decision.adoc
+0003-third-decision.adoc
+head -7 doc/adr/0002-second-decision.adoc
+= 2. Second Decision
+
+Date: 1992-01-12
+
+== Status
+
+Accepted
+head -7 doc/adr/0003-third-decision.adoc
+= 3. Third Decision
+
+Date: 1992-01-12
+
+== Status
+
+Accepted

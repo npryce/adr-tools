@@ -1,0 +1,38 @@
+echo "adoc" > .adr-file-type
+adr new First Record
+doc/adr/0001-first-record.adoc
+adr new Second Record
+doc/adr/0002-second-record.adoc
+adr new -s 1 -s 2 Third Record
+doc/adr/0003-third-record.adoc
+head -8 doc/adr/0001-first-record.adoc
+= 1. First Record
+
+Date: 1992-01-12
+
+== Status
+
+Superceded by link:0003-third-record.adoc[3. Third Record]
+
+head -8 doc/adr/0002-second-record.adoc
+= 2. Second Record
+
+Date: 1992-01-12
+
+== Status
+
+Superceded by link:0003-third-record.adoc[3. Third Record]
+
+head -12 doc/adr/0003-third-record.adoc
+= 3. Third Record
+
+Date: 1992-01-12
+
+== Status
+
+Accepted
+
+Supercedes link:0001-first-record.adoc[1. First Record]
+
+Supercedes link:0002-second-record.adoc[2. Second Record]
+

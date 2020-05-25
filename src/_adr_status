@@ -3,7 +3,7 @@ set -e
 eval "$($(dirname $0)/adr-config)"
 
 awk '
-/^## Status/,/^#/ && !/^## Status/ { 
-	if (!/^(#|\s*$)/) print
+/^[#=]{2} Status/,/^[#=]/ && !/^[#=]{2} Status/ {
+	if (!/^([#=]|\s*$)/) print
 }
 ' "$("$adr_bin_dir/_adr_file" "$1")"

@@ -1,0 +1,37 @@
+echo "adoc" > .adr-file-type
+adr new First Decision
+doc/adr/0001-first-decision.adoc
+adr new Second Decision
+doc/adr/0002-second-decision.adoc
+adr new Third Decision
+doc/adr/0003-third-decision.adoc
+adr new Fourth Decision
+doc/adr/0004-fourth-decision.adoc
+adr new Fifth Decision
+doc/adr/0005-fifth-decision.adoc
+adr new Sixth Decision
+doc/adr/0006-sixth-decision.adoc
+adr new Seventh Decision
+doc/adr/0007-seventh-decision.adoc
+adr new Eighth Decision
+doc/adr/0008-eighth-decision.adoc
+adr new Ninth Decision
+doc/adr/0009-ninth-decision.adoc
+ls doc/adr
+0001-first-decision.adoc
+0002-second-decision.adoc
+0003-third-decision.adoc
+0004-fourth-decision.adoc
+0005-fifth-decision.adoc
+0006-sixth-decision.adoc
+0007-seventh-decision.adoc
+0008-eighth-decision.adoc
+0009-ninth-decision.adoc
+head -7 doc/adr/0009-ninth-decision.adoc
+= 9. Ninth Decision
+
+Date: 1992-01-12
+
+== Status
+
+Accepted

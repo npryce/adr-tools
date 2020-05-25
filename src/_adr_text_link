@@ -1,0 +1,14 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+title="$1"
+link="$2"
+file_type="$($adr_bin_dir/_adr_file_type)"
+
+if [ "$file_type" = "md" ]
+then
+  printf "[%s](%s)" "$title" "$link"
+else
+  printf "link:%s[%s]" "$link" "$title"
+fi

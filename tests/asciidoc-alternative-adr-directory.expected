@@ -1,0 +1,14 @@
+adr init -t adoc alternative-dir
+alternative-dir/0001-record-architecture-decisions.adoc
+adr new Example ADR
+alternative-dir/0002-example-adr.adoc
+
+ls .
+alternative-dir
+ls alternative-dir
+0001-record-architecture-decisions.adoc
+0002-example-adr.adoc
+
+adr list
+alternative-dir/0001-record-architecture-decisions.adoc
+alternative-dir/0002-example-adr.adoc

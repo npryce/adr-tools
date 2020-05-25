@@ -1,0 +1,53 @@
+adr init -t adoc adrs
+adrs/0001-record-architecture-decisions.adoc
+mkdir -p adrs/templates
+cat > adrs/templates/template.adoc <<EOF
+= TITLE
+
+Project specific template!
+
+= Status
+
+STATUS
+
+= Info
+
+ADR Number: NUMBER
+
+Date: DATE
+
+EOF
+adr new Aaa Bbb
+adrs/0002-aaa-bbb.adoc
+adr new Ccc Ddd
+adrs/0003-ccc-ddd.adoc
+cat adrs/0002-aaa-bbb.adoc
+= Aaa Bbb
+
+Project specific template!
+
+= Status
+
+Accepted
+
+= Info
+
+ADR Number: 2
+
+Date: 1992-01-12
+
+cat adrs/0003-ccc-ddd.adoc
+= Ccc Ddd
+
+Project specific template!
+
+= Status
+
+Accepted
+
+= Info
+
+ADR Number: 3
+
+Date: 1992-01-12
+

@@ -1,0 +1,17 @@
+adr init -t adoc architecture-log
+architecture-log/0001-record-architecture-decisions.adoc
+adr new First Record
+architecture-log/0002-first-record.adoc
+mkdir subdir
+cd subdir
+adr new Second Record
+../architecture-log/0003-second-record.adoc
+adr list
+../architecture-log/0001-record-architecture-decisions.adoc
+../architecture-log/0002-first-record.adoc
+../architecture-log/0003-second-record.adoc
+cd ..
+adr list
+architecture-log/0001-record-architecture-decisions.adoc
+architecture-log/0002-first-record.adoc
+architecture-log/0003-second-record.adoc
