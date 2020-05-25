@@ -1,0 +1,24 @@
+adr init -t adoc
+doc/adr/0001-record-architecture-decisions.adoc
+ls doc/adr
+0001-record-architecture-decisions.adoc
+cat doc/adr/0001-record-architecture-decisions.adoc
+= 1. Record architecture decisions
+
+Date: 1992-01-12
+
+== Status
+
+Accepted
+
+== Context
+
+We need to record the architectural decisions made on this project.
+
+== Decision
+
+We will use Architecture Decision Records, as http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions[described by Michael Nygard].
+
+== Consequences
+
+See Michael Nygard's article, linked above. For a lightweight ADR toolset, see Nat Pryce's https://github.com/npryce/adr-tools[adr-tools].

@@ -5,8 +5,8 @@ eval "$($(dirname $0)/adr-config)"
 ## usage: adr generate [REPORT [OPTION ...]]
 ##
 ## Generates summary documentation about the architecture decision records
-## that is typically fed into the tool chain for publishing a project's 
-## documentatation.
+## that is typically fed into the tool chain for publishing a project's
+## documentation.
 ##
 ## To list the report types that can be generated, run:
 ##
@@ -16,7 +16,7 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ##     adr help generate <report-type>
 ##
-## For example, the following command will run the "toc" (table of contents) 
+## For example, the following command will run the "toc" (table of contents)
 ## generator:
 ##
 ##     adr generate toc

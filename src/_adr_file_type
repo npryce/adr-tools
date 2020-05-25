@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+reldir=.
+
+function mkrel() {
+	local d=$reldir/$1
+	echo ${d#./}
+}
+
+function absdir() {
+	(cd $(dirname $1) && pwd -P)
+}
+
+while [ $(absdir $reldir) != / ]
+do
+	if [ -f $(mkrel .adr-file-type) ]
+	then
+	    cat $(mkrel .adr-file-type)
+		exit
+	else
+		reldir=$reldir/..
+	fi
+done
+echo md

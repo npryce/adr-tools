@@ -10,7 +10,7 @@ adr_dir=$("$adr_bin_dir/_adr_dir")
 
 if [ -d $adr_dir ]
 then
-   find $adr_dir | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md" | sort
+   find $adr_dir | grep -E "^$adr_dir/[0-9]+-[^/]*\\.$adr_file_type" | sort
 else
     echo "The $adr_dir directory does not exist"
     exit 1

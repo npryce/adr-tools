@@ -1,0 +1,13 @@
+echo "adoc" > .adr-file-type
+adr new First Decision
+doc/adr/0001-first-decision.adoc
+adr new Second Decision
+doc/adr/0002-second-decision.adoc
+adr new Third Decision
+doc/adr/0003-third-decision.adoc
+adr generate toc -p foo/doc/adr/
+= Architecture Decision Records
+
+* link:foo/doc/adr/0001-first-decision.adoc[1. First Decision]
+* link:foo/doc/adr/0002-second-decision.adoc[2. Second Decision]
+* link:foo/doc/adr/0003-third-decision.adoc[3. Third Decision]

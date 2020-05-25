@@ -4,16 +4,17 @@ eval "$($(dirname $0)/adr-config)"
 
 ## usage: adr generate toc [-i INTRO] [-o OUTRO] [-p LINK_PREFIX]
 ##
-## Generates a table of contents in Markdown format to stdout.
+## Generates a table of contents in project format (Markdown or
+## Asciidoc) to stdout.
 ##
 ## Options:
 ##
 ## -i INTRO  precede the table of contents with the given INTRO text.
 ## -o OUTRO  follow the table of contents with the given OUTRO text.
-## -p LINK_PREFIX   
+## -p LINK_PREFIX
 ##           prefix each decision file link with LINK_PREFIX.
 ##
-## Both INTRO and OUTRO must be in Markdown format.
+## Both INTRO and OUTRO must be in project format.
 
 args=$(getopt i:o:p: $*)
 set -- $args
@@ -44,7 +45,7 @@ do
 done
 
 cat <<EOF
-# Architecture Decision Records
+$("$adr_bin_dir/_adr_text_header" 1 'Architecture Decision Records')
 
 EOF
 
@@ -59,7 +60,7 @@ do
     title=$("$adr_bin_dir/_adr_title" $f)
     link=${link_prefix}$(basename $f)
 
-    echo "* [$title]($link)"
+    echo "* $("$adr_bin_dir/_adr_text_link" "$title" "$link")"
 done
 
 if [ ! -z $outro ]

@@ -1,0 +1,46 @@
+adr init -t adoc
+doc/adr/0001-record-architecture-decisions.adoc
+adr new An idea that seems good at the time
+doc/adr/0002-an-idea-that-seems-good-at-the-time.adoc
+adr new -s 2 A better idea
+doc/adr/0003-a-better-idea.adoc
+adr new This will work
+doc/adr/0004-this-will-work.adoc
+adr new -s 3 The end
+doc/adr/0005-the-end.adoc
+# with default root and extension in links
+adr generate graph
+digraph {
+  node [shape=plaintext];
+  subgraph {
+    _1 [label="1. Record architecture decisions"; URL="0001-record-architecture-decisions.html"];
+    _2 [label="2. An idea that seems good at the time"; URL="0002-an-idea-that-seems-good-at-the-time.html"];
+    _1 -> _2 [style="dotted", weight=1];
+    _3 [label="3. A better idea"; URL="0003-a-better-idea.html"];
+    _2 -> _3 [style="dotted", weight=1];
+    _4 [label="4. This will work"; URL="0004-this-will-work.html"];
+    _3 -> _4 [style="dotted", weight=1];
+    _5 [label="5. The end"; URL="0005-the-end.html"];
+    _4 -> _5 [style="dotted", weight=1];
+  }
+  _3 -> _2 [label="Supercedes", weight=0]
+  _5 -> _3 [label="Supercedes", weight=0]
+}
+# with specified root and extension in links
+adr generate graph -p http://example.com/ -e .xxx
+digraph {
+  node [shape=plaintext];
+  subgraph {
+    _1 [label="1. Record architecture decisions"; URL="http://example.com/0001-record-architecture-decisions.xxx"];
+    _2 [label="2. An idea that seems good at the time"; URL="http://example.com/0002-an-idea-that-seems-good-at-the-time.xxx"];
+    _1 -> _2 [style="dotted", weight=1];
+    _3 [label="3. A better idea"; URL="http://example.com/0003-a-better-idea.xxx"];
+    _2 -> _3 [style="dotted", weight=1];
+    _4 [label="4. This will work"; URL="http://example.com/0004-this-will-work.xxx"];
+    _3 -> _4 [style="dotted", weight=1];
+    _5 [label="5. The end"; URL="http://example.com/0005-the-end.xxx"];
+    _4 -> _5 [style="dotted", weight=1];
+  }
+  _3 -> _2 [label="Supercedes", weight=0]
+  _5 -> _3 [label="Supercedes", weight=0]
+}

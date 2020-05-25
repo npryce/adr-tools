@@ -12,7 +12,8 @@ Quick Start
 
 Use the `adr` command to manage ADRs.  Try running `adr help`.
 
-ADRs are stored in a subdirectory of your project as Markdown files. 
+ADRs are stored in a subdirectory of your project as Markdown files by default,
+but you can specify AsciiDoc format when you initialise the ADR log.
 The default directory is `doc/adr`, but you can specify the directory
 when you initialise the ADR log.
 
@@ -20,10 +21,14 @@ when you initialise the ADR log.
 
         adr init doc/architecture/decisions
 
-    This will create a directory named `doc/architecture/decisions` 
+    This will create a directory named `doc/architecture/decisions`
     containing the first ADR, which records that you are using ADRs
-    to record architectural decisions and links to 
+    to record architectural decisions and links to
     [Michael Nygard's article on the subject][ADRs].
+
+    If you want your ADR files in AsciiDoc instead of Markdown, use the `-t adoc` option.
+
+        adr init -t adoc doc/architecture/decisions
 
 2. Create Architecture Decision Records
 
@@ -42,7 +47,7 @@ when you initialise the ADR log.
     ADR 9, and changes the status of ADR 9 to indicate that it is
     superceded by the new ADR.  It then opens the new ADR in your
     editor of choice.
-    
+
 3. For further information, use the built in help:
 
         adr help
@@ -50,6 +55,6 @@ when you initialise the ADR log.
 
 See the [tests](tests/) for detailed examples.
 
-The decisions for this tool are recorded as [architecture decision records in the project repository](doc/adr/). 
+The decisions for this tool are recorded as [architecture decision records in the project repository](doc/adr/).
 
 [ADRs]: http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions

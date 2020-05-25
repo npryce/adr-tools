@@ -1,0 +1,15 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+level=$1
+text="$2"
+file_type="$($adr_bin_dir/_adr_file_type)"
+
+if [ "$file_type" = "md" ]
+then
+  printf '#%.0s' {1..$level}
+else
+  printf '=%.0s' {1..$level}
+fi
+printf ' %s' "$text"

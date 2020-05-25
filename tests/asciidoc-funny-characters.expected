@@ -1,0 +1,11 @@
+echo "adoc" > .adr-file-type
+adr new Something About Node.JS
+doc/adr/0001-something-about-node-js.adoc
+adr new Slash/Slash/Slash/
+doc/adr/0002-slash-slash-slash.adoc
+adr new -- "-Bar-"
+doc/adr/0003-bar.adoc
+ls doc/adr
+0001-something-about-node-js.adoc
+0002-slash-slash-slash.adoc
+0003-bar.adoc

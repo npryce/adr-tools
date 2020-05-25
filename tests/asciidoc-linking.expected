@@ -1,0 +1,50 @@
+echo "adoc" > .adr-file-type
+adr new First Record
+doc/adr/0001-first-record.adoc
+adr new Second Record
+doc/adr/0002-second-record.adoc
+adr new Third Record
+doc/adr/0003-third-record.adoc
+adr link 3 Amends 1 "Amended by"
+adr link 3 Clarifies 2 "Clarified by"
+head -12 doc/adr/0001-first-record.adoc
+= 1. First Record
+
+Date: 1992-01-12
+
+== Status
+
+Accepted
+
+Amended by link:0003-third-record.adoc[3. Third Record]
+
+== Context
+
+head -12 doc/adr/0002-second-record.adoc
+= 2. Second Record
+
+Date: 1992-01-12
+
+== Status
+
+Accepted
+
+Clarified by link:0003-third-record.adoc[3. Third Record]
+
+== Context
+
+head -14 doc/adr/0003-third-record.adoc
+= 3. Third Record
+
+Date: 1992-01-12
+
+== Status
+
+Accepted
+
+Amends link:0001-first-record.adoc[1. First Record]
+
+Clarifies link:0002-second-record.adoc[2. Second Record]
+
+== Context
+
