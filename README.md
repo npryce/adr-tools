@@ -1,3 +1,5 @@
+**Superseeded by [log4brains](https://github.com/thomvaill/log4brains)**
+
 ADR Tools
 =========
 
