@@ -1,0 +1,68 @@
+adr config
+# This script returns the configuration values for adr-tools. It does not change these values.
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/home/spriggsj/adr-tools-cp/src"
+
+adr config -q
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/home/spriggsj/adr-tools-cp/src"
+
+echo "adr_template_dir='/usr/local/share/adr-tools'" | sudo tee /etc/adr-config >/dev/null
+adr config
+# This script returns the configuration values for adr-tools. It does not change these values.
+# Loading system values from /etc/adr-config
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+adr config -q
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+echo "adr_template_dir='/usr/local/share/adr-tools'" > ~/.adr-config
+adr config
+# This script returns the configuration values for adr-tools. It does not change these values.
+# Loading system values from /etc/adr-config
+# Loading global values from ~/.adr-config
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+adr config -q
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+mkdir -p doc/adr
+echo "adr_template_dir='/usr/local/share/adr-tools'" > doc/adr/.adr-config
+adr config
+# This script returns the configuration values for adr-tools. It does not change these values.
+# Loading system values from /etc/adr-config
+# Loading global values from ~/.adr-config
+# Loading local values from doc/adr/.adr-config
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+adr config -q
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+sudo rm /etc/adr-config
+adr config
+# This script returns the configuration values for adr-tools. It does not change these values.
+# Loading global values from ~/.adr-config
+# Loading local values from doc/adr/.adr-config
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+adr config -q
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+rm ~/.adr-config
+adr config
+# This script returns the configuration values for adr-tools. It does not change these values.
+# Loading local values from doc/adr/.adr-config
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
+
+adr config -q
+adr_bin_dir="/home/spriggsj/adr-tools-cp/src"
+adr_template_dir="/usr/local/share/adr-tools"
