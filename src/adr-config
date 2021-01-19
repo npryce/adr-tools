@@ -3,5 +3,60 @@
 
 basedir=$(cd -L $(dirname $0) >/dev/null 2>&1 && pwd -L)
 
-echo 'adr_bin_dir="'"${basedir}"'"'
-echo 'adr_template_dir="'"${basedir}"'"'
+adr_bin_dir="$basedir"
+adr_template_dir="$basedir"
+
+quiet=0
+
+while getopts q arg
+do
+    case "$arg" in
+      q)
+        quiet=1
+        ;;
+      *)
+        echo "Not implemented: $arg" >&2
+        exit 1
+        ;;
+    esac
+done
+
+if [ "$quiet" -eq 0 ]
+then
+  echo "# This script returns the configuration values for adr-tools. It does not change these values."
+fi
+if [ -e /etc/default/adr-config ]
+then
+  if [ "$quiet" -eq 0 ]
+  then
+    echo "# Loading system values from /etc/default/adr-config"
+  fi
+  source /etc/default/adr-config
+fi
+if [ -e /etc/adr-config ]
+then
+  if [ "$quiet" -eq 0 ]
+  then
+      echo "# Loading system values from /etc/adr-config"
+  fi
+  source /etc/adr-config
+fi
+if [ -e ~/.adr-config ]
+then
+  if [ "$quiet" -eq 0 ]
+  then
+    echo "# Loading global values from ~/.adr-config"
+  fi
+  source ~/.adr-config
+fi
+if [ -e "$("${adr_bin_dir}/_adr_dir")/.adr-config" ]
+then
+  if [ "$quiet" -eq 0 ]
+  then
+      echo "# Loading local values from $("${adr_bin_dir}/_adr_dir")/.adr-config"
+  fi
+  source "$("${adr_bin_dir}/_adr_dir")/.adr-config"
+fi
+
+echo 'adr_bin_dir="'"${adr_bin_dir}"'"'
+echo 'adr_template_dir="'"${adr_template_dir}"'"'
