@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")/adr-config")"
 
 cmds=("$@")
 
@@ -18,7 +18,7 @@ if [ -z "$cmds" -o \( ! -x "$cmdexe" -a ! -x "$helpexe" \) ]
 then
     echo "usage: adr help COMMAND [ARG] ..."
     echo "COMMAND is one of: "
-    $adr_bin_dir/_adr_commands | sed 's/^/  /'
+    "$adr_bin_dir/_adr_commands" | sed 's/^/  /'
     echo "Run 'adr help COMMAND' for help on a specific command."
 else
 	if [ -x "$helpexe" ]
@@ -37,7 +37,7 @@ else
 		echo Subcommands:
 		for f in "${subcmds[@]}"
 		do
-			basename $f | cut -c $(( ${#1} + 7 ))-
+			basename "$f" | cut -c $(( ${#1} + 7 ))-
 		done | sed "s/^/  adr $1 /"
 	fi
 fi
