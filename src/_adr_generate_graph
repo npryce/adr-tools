@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")/adr-config")"
 
 ## usage: adr generate graph [-p LINK_PREFIX] [-e LINK-EXTENSION]
 ##
@@ -61,10 +61,10 @@ echo "  subgraph {"
 for f in $("$adr_bin_dir/adr-list")
 do
 	n=$(index "$f")
-	title=$("$adr_bin_dir/_adr_title" $f)
+	title="$("$adr_bin_dir/_adr_title" "$f")"
 	
-	echo "    _$n [label=\"$title\"; URL=\"${link_prefix}$(basename $f .md)${link_extension}\"];"
-	if [ $n -gt 1 ]
+	echo "    _$n [label=\"$title\"; URL=\"${link_prefix}$(basename "$f" .md)${link_extension}\"];"
+	if [ "$n" -gt 1 ]
 	then
 		echo "    _$(($n - 1)) -> _$n [style=\"dotted\", weight=1];"
 	fi

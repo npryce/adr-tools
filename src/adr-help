@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")/adr-config")"
 
 ## usage: adr help [COMMAND [SUBCOMMAND...]]
 ##
@@ -13,4 +13,4 @@ eval "$($(dirname $0)/adr-config)"
 
 pager="${ADR_PAGER:-${PAGER:-more}}"
 
-("$adr_bin_dir/_adr_help" "$@") | $pager
+("$adr_bin_dir/_adr_help" "$@") | "$pager"

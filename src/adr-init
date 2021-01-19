@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")/adr-config")"
 
 ## usage: adr init [DIRECTORY]
 ## 
@@ -12,7 +12,7 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ## If the DIRECTORY is not given, the ADRs are stored in the directory `doc/adr`.
 
-if [ ! -z $1 ]
+if [ ! -z "$1" ]
 then
     mkdir -p "$1"
     echo "$1" > .adr-dir

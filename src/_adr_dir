@@ -1,30 +1,30 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")/adr-config")"
 
 reldir=.
 
 function mkrel() {
-	local d=$reldir/$1
-	echo ${d#./}
+	local d="$reldir/$1"
+	echo "${d#./}"
 }
 
 function absdir() {
-	(cd $(dirname $1) && pwd -P)
+	(cd "$(dirname "$1")" && pwd -P)
 }
 
-while [ $(absdir $reldir) != / ]
+while [ "$(absdir "$reldir")" != / ]
 do
-	if [ -f $(mkrel .adr-dir) ]
+	if [ -f "$(mkrel .adr-dir)" ]
 	then
-	    mkrel $(cat $(mkrel .adr-dir))
+	    mkrel "$(cat "$(mkrel .adr-dir)")"
 		exit
-	elif [ -d $(mkrel doc/adr) ] 
+	elif [ -d "$(mkrel doc/adr)" ]
 	then
 		mkrel doc/adr
 		exit
 	else
-		reldir=$reldir/..
+		reldir="$reldir/.."
 	fi
 done
 echo doc/adr
