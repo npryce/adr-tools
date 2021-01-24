@@ -33,7 +33,7 @@ when you initialise the ADR log.
     editor of choice (as specified by the VISUAL or EDITOR environment
     variable).
 
-    To create a new ADR that supercedes a previous one (ADR 9, for example),
+    To create a new ADR that supersedes a previous one (ADR 9, for example),
     use the -s option.
 
         adr new -s 9 Use Rust for performance-critical functionality
