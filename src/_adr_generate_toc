@@ -16,7 +16,7 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ## Both INTRO and OUTRO must be in Markdown format.
 
-args=$(getopt i:o:p:s $*)
+args=$(getopt s:i:o:p $*)
 set -- $args
 
 link_prefix=
