@@ -2,28 +2,34 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr generate toc [-i INTRO] [-o OUTRO] [-p LINK_PREFIX]
+## usage: adr generate toc [-s] [-i INTRO] [-o OUTRO] [-p LINK_PREFIX]
 ##
 ## Generates a table of contents in Markdown format to stdout.
 ##
 ## Options:
 ##
+## -s        include the state of each decision next to its link.
 ## -i INTRO  precede the table of contents with the given INTRO text.
 ## -o OUTRO  follow the table of contents with the given OUTRO text.
-## -p LINK_PREFIX   
+## -p LINK_PREFIX
 ##           prefix each decision file link with LINK_PREFIX.
 ##
 ## Both INTRO and OUTRO must be in Markdown format.
 
-args=$(getopt i:o:p: $*)
+args=$(getopt si:o:p: $*)
 set -- $args
 
 link_prefix=
+output_status=
 
 for arg
 do
     case "$arg"
     in
+        -s)
+            output_status=1
+            shift
+            ;;
         -i)
             intro="$2"
             shift 2
@@ -58,8 +64,17 @@ for f in $("$adr_bin_dir/adr-list")
 do
     title=$("$adr_bin_dir/_adr_title" $f)
     link=${link_prefix}$(basename $f)
+    status=
 
-    echo "* [$title]($link)"
+    if [[ "$output_status" == "1" ]]; then
+      # We're only interested in the first line of the status (e.g. Accepted).
+      # Second line, if any, will be a reference to another ADR that supercedes
+      # this record, that this record supercedes or that amends it.
+      # Additionally, prefix ADR links if prefix specified.
+      status=": $("$adr_bin_dir/_adr_status" $f | head -n 1 | sed -E -e "s/\((.+\.md)\)/(${link_prefix//\//\\/}\1)/")"
+    fi
+
+    echo -e "* [$title]($link)$status"
 done
 
 if [ ! -z $outro ]
