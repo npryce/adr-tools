@@ -2,12 +2,13 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr generate toc [-i INTRO] [-o OUTRO] [-p LINK_PREFIX]
+## usage: adr generate toc [-s] [-i INTRO] [-o OUTRO] [-p LINK_PREFIX]
 ##
 ## Generates a table of contents in Markdown format to stdout.
 ##
 ## Options:
 ##
+## -s        include the state of each decision next to its link.
 ## -i INTRO  precede the table of contents with the given INTRO text.
 ## -o OUTRO  follow the table of contents with the given OUTRO text.
 ## -p LINK_PREFIX
