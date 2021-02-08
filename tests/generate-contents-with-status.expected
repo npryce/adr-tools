@@ -1,0 +1,15 @@
+adr new First Decision
+doc/adr/0001-first-decision.md
+adr new Second Decision
+doc/adr/0002-second-decision.md
+adr new Third Decision
+doc/adr/0003-third-decision.md
+adr new -s 3 Fourth Decision
+doc/adr/0004-fourth-decision.md
+adr generate toc -s
+# Architecture Decision Records
+
+* [1. First Decision](0001-first-decision.md): Accepted
+* [2. Second Decision](0002-second-decision.md): Accepted
+* [3. Third Decision](0003-third-decision.md): Superceded by [4. Fourth Decision](0004-fourth-decision.md)
+* [4. Fourth Decision](0004-fourth-decision.md): Accepted
