@@ -63,7 +63,15 @@ for f in $("$adr_bin_dir/adr-list")
 do
     title=$("$adr_bin_dir/_adr_title" $f)
     link=${link_prefix}$(basename $f)
-    status=${output_status:+": $("$adr_bin_dir/_adr_status" $f | tail -n 1)"}
+    status=
+
+    if [[ "$output_status" == "1" ]]; then
+      # We're only interested in the first line of the status (e.g. Accepted).
+      # Second line, if any, will be a reference to another ADR that supercedes
+      # this record, that this record supercedes or that amends it.
+      # Additionally, prefix ADR links if prefix specified.
+      status=": $("$adr_bin_dir/_adr_status" $f | head -n 1 | sed -E -e "s/\((.+\.md)\)/(${link_prefix//\//\\/}\1)/")"
+    fi
 
     echo -e "* [$title]($link)$status"
 done
