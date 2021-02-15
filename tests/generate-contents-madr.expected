@@ -1,0 +1,12 @@
+adr init docs madr
+docs/0001-record-architecture-decisions.md
+adr new First Decision
+docs/0002-first-decision.md
+adr new Second Decision
+docs/0003-second-decision.md
+adr generate toc
+# Architecture Decision Records
+
+* [Use Markdown Architectural Decision Records](0001-record-architecture-decisions.md)
+* [First Decision](0002-first-decision.md)
+* [Second Decision](0003-second-decision.md)

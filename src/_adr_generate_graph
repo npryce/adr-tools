@@ -31,7 +31,7 @@ eval "$($(dirname $0)/adr-config)"
 
 link_prefix=
 link_extension=.html
-
+template_type=$("$adr_bin_dir/_adr_type")
 while getopts e:p: arg
 do
     case "$arg" in
@@ -51,7 +51,7 @@ shift $((OPTIND-1))
 
 
 function index() {
-	basename "$1" | sed -e 's/-.*//' | sed -e 's/^0*//'
+	basename "$1" | sed -e 's/-.*//' | sed -e 's/^0//' | sed -e 's/^0//' | sed -e 's/^0//'
 }
 
 echo "digraph {"
@@ -68,6 +68,7 @@ do
 	then
 		echo "    _$(($n - 1)) -> _$n [style=\"dotted\", weight=1];"
 	fi
+
 done
 echo "  }"
 

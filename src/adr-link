@@ -18,6 +18,14 @@ source="${1:?SOURCE}"
 forward_link="${2:?LINK}"
 target="${3:?TARGET}"
 reverse_link="${4:?REVERSE-LINK}"
+type=$("$adr_bin_dir/_adr_type")
 
-"$adr_bin_dir/_adr_add_link" "$source" "$forward_link" "$target"
-"$adr_bin_dir/_adr_add_link" "$target" "$reverse_link" "$source"
+if [ -z $type ]
+then
+    type_suffix=""
+else
+    type_suffix="_$type"
+fi
+
+"$adr_bin_dir/_adr_add_link$type_suffix" "$source" "$forward_link" "$target"
+"$adr_bin_dir/_adr_add_link$type_suffix" "$target" "$reverse_link" "$source"
