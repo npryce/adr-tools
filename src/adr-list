@@ -11,6 +11,7 @@ adr_dir=$("$adr_bin_dir/_adr_dir")
 if [ -d $adr_dir ]
 then
    find $adr_dir -maxdepth 1 -type f -exec basename {} \; | grep -E '^[0-9]*[1-9][0-9]*-[^/]*\.md$' | sort | sed -e "s?^?$adr_dir/?"
+   find $adr_dir -maxdepth 1 -type f | grep -E "^.{${#adr_dir}}/[0-9]*[1-9][0-9]*-[^/]*\\.md$" | sort
 else
     echo "The $adr_dir directory does not exist"
     exit 1
