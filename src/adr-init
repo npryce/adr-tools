@@ -2,7 +2,7 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr init [DIRECTORY]
+## usage: adr init [DIRECTORY] [TYPE]
 ## 
 ## Initialises the directory of architecture decision records:
 ## 
@@ -11,6 +11,14 @@ eval "$($(dirname $0)/adr-config)"
 ##    record architectural decisions with ADRs.
 ##
 ## If the DIRECTORY is not given, the ADRs are stored in the directory `doc/adr`.
+##
+## To initialize with a non default template a directory has to be specified.
+## E.g. To use the MADR template and save documentation in the docs directory:
+##      adr init docs madr
+##
+## Currently supported templates:
+##  * madr
+
 
 if [ ! -z $1 ]
 then
@@ -18,5 +26,19 @@ then
     echo "$1" > .adr-dir
 fi
 
-VISUAL=true ADR_TEMPLATE="$adr_template_dir/init.md" \
-      "$adr_bin_dir/adr-new" record-architecture-decisions
+if [ ! -z $2 ]
+then
+    template_type=$2
+    if [ -f "$adr_template_dir/template-$template_type.md" ] && [ -f "$adr_template_dir/init-$template_type.md" ]
+    then
+        echo "$2" > .adr-type
+    else
+        echo "$2 is not a supported type"
+    fi
+    VISUAL=true ADR_TEMPLATE="$adr_template_dir/init-$template_type.md" \
+          "$adr_bin_dir/adr-new" record-architecture-decisions
+else
+    VISUAL=true ADR_TEMPLATE="$adr_template_dir/init.md" \
+          "$adr_bin_dir/adr-new" record-architecture-decisions
+fi
+

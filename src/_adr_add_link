@@ -14,7 +14,7 @@ awk -v link_type="$link_type" -v target="$(basename $target)" -v target_title="$
 	}
 	/^##/ {
 		if (in_status_section) {
-		    print link_type " [" target_title "](" target ")"
+		    print link_type " ["target_title"](" target ")"
 			print ""
 		}
 		in_status_section=0
