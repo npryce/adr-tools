@@ -8,4 +8,4 @@ adr new Seventh Decision
 adr new Eighth Decision
 adr new Ninth Decision
 ls doc/adr
-head -7 doc/adr/0009-ninth-decision.md
+head -10 doc/adr/0009-ninth-decision.md

@@ -1,5 +1,5 @@
 adr init architecture-log
-architecture-log/0001-record-architecture-decisions.md
+architecture-log/0001-use-markdown-architectural-decision-records.md
 adr new First Record
 architecture-log/0002-first-record.md
 mkdir subdir
@@ -7,11 +7,11 @@ cd subdir
 adr new Second Record
 ../architecture-log/0003-second-record.md
 adr list
-../architecture-log/0001-record-architecture-decisions.md
+../architecture-log/0001-use-markdown-architectural-decision-records.md
 ../architecture-log/0002-first-record.md
 ../architecture-log/0003-second-record.md
 cd ..
 adr list
-architecture-log/0001-record-architecture-decisions.md
+architecture-log/0001-use-markdown-architectural-decision-records.md
 architecture-log/0002-first-record.md
 architecture-log/0003-second-record.md

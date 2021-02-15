@@ -1,19 +1,18 @@
 adr init adrs
 mkdir -p adrs/templates
 cat > adrs/templates/template.md <<EOF
-# TITLE
+---
+title: "NUMBER. [short title of solved problem and solution]"
+geekdocRepo: https://github.com/owncloud/ocis
+geekdocEditPath: edit/master/docs/ocis/adr
+geekdocFilePath: 0005-example.md
+custom: foo
+---
 
-Project specific template!
+* Status: [proposed | accepted | deprecated | superseded by [ADR-0005](0005-example.md) | …] <!-- optional -->
+* Date: [YYYY-MM-DD when the decision was last updated] <!-- optional -->
 
-# Status
-
-STATUS
-
-# Info
-
-ADR Number: NUMBER
-
-Date: DATE
+## Context and Problem Statement
 
 EOF
 adr new Aaa Bbb

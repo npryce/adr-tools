@@ -7,6 +7,6 @@ doc/adr/0003-third-decision.md
 adr generate toc
 # Architecture Decision Records
 
-* [1. First Decision](0001-first-decision.md)
-* [2. Second Decision](0002-second-decision.md)
-* [3. Third Decision](0003-third-decision.md)
+* [1. First Decision]({{< ref "0001-first-decision.md" >}})
+* [2. Second Decision]({{< ref "0002-second-decision.md" >}})
+* [3. Third Decision]({{< ref "0003-third-decision.md" >}})

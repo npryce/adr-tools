@@ -1,28 +1,34 @@
 #!/bin/bash
 set -e
 eval "$($(dirname $0)/adr-config)"
-
+date=${ADR_DATE:-$(date +%Y-%m-%d)}
 source=$("$adr_bin_dir/_adr_file" "${1:?SOURCE}")
 link_type="${2:?LINK TYPE}"
 target=$("$adr_bin_dir/_adr_file" "${3:?TARGET}")
 
 target_title="$("$adr_bin_dir/_adr_title" "$target")"
+updated_status="$link_type [$target_title]({{< ref \"$(basename $target)\" >}})"
 
-awk -v link_type="$link_type" -v target="$(basename $target)" -v target_title="$target_title" '
-	BEGIN { 
-		in_status_section=0
-	}
-	/^##/ {
-		if (in_status_section) {
-		    print link_type " ["target_title"](" target ")"
-			print ""
-		}
-		in_status_section=0
-	}
-	/^## Status$/ { 
-		in_status_section=1 
-	}
-	{ print }
-' "$source" > "$source.tmp"
+if [ "$link_type" != "supersedes" ] 
+then
+# TODO don't hardcode line 9
+sed -i "s/^\* Status: \(.*\)/\* Status: $updated_status/" $("$adr_bin_dir/_adr_file" "$1")
 
-mv "$source.tmp" "$source"
+#awk -v n=10 -v s="* Status: $updated_status" '(NR==n) { print s }{ print } ' "$source" > "$source.tmp" && mv "$source.tmp" "$source"
+fi
+
+if [ "$link_type" == "superseded by" ]
+then
+sed -e "s/\* Date:.*/\* Date: $date/" "$source" > "$source.tmp" && mv "$source.tmp" "$source"
+fi
+
+if grep -q "## Links" "$source"; then
+    cat <<EOT >> "$source"
+* $updated_status
+EOT
+else
+    cat <<EOT >> "$source"
+## Links
+* $updated_status
+EOT
+fi

@@ -1,4 +1,4 @@
-**Superseeded by [log4brains](https://github.com/thomvaill/log4brains)**
+**Superseded by [log4brains](https://github.com/thomvaill/log4brains)**
 
 ADR Tools
 =========
@@ -35,14 +35,14 @@ when you initialise the ADR log.
     editor of choice (as specified by the VISUAL or EDITOR environment
     variable).
 
-    To create a new ADR that supercedes a previous one (ADR 9, for example),
+    To create a new ADR that supersedes a previous one (ADR 9, for example),
     use the -s option.
 
         adr new -s 9 Use Rust for performance-critical functionality
 
-    This will create a new ADR file that is flagged as superceding
+    This will create a new ADR file that is flagged as superseding
     ADR 9, and changes the status of ADR 9 to indicate that it is
-    superceded by the new ADR.  It then opens the new ADR in your
+    superseded by the new ADR.  It then opens the new ADR in your
     editor of choice.
     
 3. For further information, use the built in help:

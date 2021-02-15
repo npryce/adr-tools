@@ -1,37 +1,37 @@
+adr init docs madr
+docs/0001-use-markdown-architectural-decision-records.md
 adr new First Record
-doc/adr/0001-first-record.md
+docs/0002-first-record.md
 adr new Second Record
-doc/adr/0002-second-record.md
-adr new -s 1 -s 2 Third Record
-doc/adr/0003-third-record.md
-head -8 doc/adr/0001-first-record.md
-# 1. First Record
+docs/0003-second-record.md
+adr new -s 2 -s 3 Third Record
+docs/0004-third-record.md
+head -10 docs/0002-first-record.md
+---
+title: "2. First Record"
+geekdocRepo: https://github.com/owncloud/ocis
+geekdocEditPath: edit/master/docs/ocis/adr
+geekdocFilePath: 0002-first-record.md
+---
 
-Date: 1992-01-12
+* Status: superseded by [4. Third Record]({{< ref "0004-third-record.md" >}})
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+head -10 docs/0003-second-record.md
+---
+title: "3. Second Record"
+geekdocRepo: https://github.com/owncloud/ocis
+geekdocEditPath: edit/master/docs/ocis/adr
+geekdocFilePath: 0003-second-record.md
+---
 
-## Status
+* Status: superseded by [4. Third Record]({{< ref "0004-third-record.md" >}})
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+tail -6 docs/0004-third-record.md
+## Links <!-- optional -->
 
-Superceded by [3. Third Record](0003-third-record.md)
-
-head -8 doc/adr/0002-second-record.md
-# 2. Second Record
-
-Date: 1992-01-12
-
-## Status
-
-Superceded by [3. Third Record](0003-third-record.md)
-
-head -12 doc/adr/0003-third-record.md
-# 3. Third Record
-
-Date: 1992-01-12
-
-## Status
-
-Accepted
-
-Supercedes [1. First Record](0001-first-record.md)
-
-Supercedes [2. Second Record](0002-second-record.md)
-
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* supersedes [2. First Record]({{< ref "0002-first-record.md" >}})
+* supersedes [3. Second Record]({{< ref "0003-second-record.md" >}})

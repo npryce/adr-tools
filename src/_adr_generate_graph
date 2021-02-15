@@ -31,7 +31,6 @@ eval "$($(dirname $0)/adr-config)"
 
 link_prefix=
 link_extension=.html
-template_type=$("$adr_bin_dir/_adr_type")
 while getopts e:p: arg
 do
     case "$arg" in

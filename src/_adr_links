@@ -2,12 +2,8 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-template_type=$("$adr_bin_dir/_adr_type")
-case $template_type in
-    "")
-        "$adr_bin_dir/_adr_status" "$1" | sed -n -E 's/^(.+) \[.*\]\(0*([1-9][0-9]*).*\)/\2=\1/p'
-    ;;
-    madr)
-        sed 's/^\* //' "$("$adr_bin_dir/_adr_file" "$1")" | sed -n '/Status:/!p' | sed -n -E 's/^([a-zA-Z ]+) \[.*\]\(0*([1-9][0-9]*).*\)/\2=\1/p'
-    ;;  
-esac
+# the current status
+"$adr_bin_dir/_adr_status" "$1" | sed -n -E 's/^(.+) \[.*\]\(\{\{< ref "0*([1-9][0-9]*).*" >}}\)/\2=\1/p'
+
+# links
+sed -n '/## Links/,//p' $("$adr_bin_dir/_adr_file" "$1") | sed -n -E 's/^\* (.+) \[.*\]\(\{\{< ref "0*([1-9][0-9]*).*" >}}\)/\2=\1/p'

@@ -1,47 +1,27 @@
+adr init docs madr
+docs/0001-use-markdown-architectural-decision-records.md
 adr new First Record
-doc/adr/0001-first-record.md
+docs/0002-first-record.md
 adr new Second Record
-doc/adr/0002-second-record.md
-adr new -l "1:Amends:Amended by" -l "2:Clarifies:Clarified by" Third Record
-doc/adr/0003-third-record.md
-head -12 doc/adr/0001-first-record.md
-# 1. First Record
+docs/0003-second-record.md
+adr new -l "2:Amends:Amended by" -l "3:Clarifies:Clarified by" Third Record
+docs/0004-third-record.md
+tail -5 docs/0002-first-record.md
+## Links <!-- optional -->
 
-Date: 1992-01-12
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Amended by [4. Third Record]({{< ref "0004-third-record.md" >}})
+tail -5 docs/0003-second-record.md
+## Links <!-- optional -->
 
-## Status
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Clarified by [4. Third Record]({{< ref "0004-third-record.md" >}})
+tail -6 docs/0004-third-record.md
+## Links <!-- optional -->
 
-Accepted
-
-Amended by [3. Third Record](0003-third-record.md)
-
-## Context
-
-head -12 doc/adr/0002-second-record.md
-# 2. Second Record
-
-Date: 1992-01-12
-
-## Status
-
-Accepted
-
-Clarified by [3. Third Record](0003-third-record.md)
-
-## Context
-
-head -14 doc/adr/0003-third-record.md
-# 3. Third Record
-
-Date: 1992-01-12
-
-## Status
-
-Accepted
-
-Amends [1. First Record](0001-first-record.md)
-
-Clarifies [2. Second Record](0002-second-record.md)
-
-## Context
-
+* [Link type] [Link to ADR] <!-- example: Refined by [ADR-0005](0005-example.md) -->
+* … <!-- numbers of links can vary -->
+* Amends [2. First Record]({{< ref "0002-first-record.md" >}})
+* Clarifies [3. Second Record]({{< ref "0003-second-record.md" >}})

@@ -59,7 +59,7 @@ do
     title=$("$adr_bin_dir/_adr_title" $f)
     link=${link_prefix}$(basename $f)
 
-    echo "* [$title]($link)"
+    echo "* [$title]({{< ref \"$link\" >}})"
 done
 
 if [ ! -z $outro ]

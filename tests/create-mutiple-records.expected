@@ -8,19 +8,25 @@ ls doc/adr
 0001-first-decision.md
 0002-second-decision.md
 0003-third-decision.md
-head -7 doc/adr/0002-second-decision.md
-# 2. Second Decision
+head -10 doc/adr/0002-second-decision.md
+---
+title: "2. Second Decision"
+geekdocRepo: https://github.com/owncloud/ocis
+geekdocEditPath: edit/master/docs/ocis/adr
+geekdocFilePath: 0002-second-decision.md
+---
 
-Date: 1992-01-12
+* Status: proposed
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12
+head -10 doc/adr/0003-third-decision.md
+---
+title: "3. Third Decision"
+geekdocRepo: https://github.com/owncloud/ocis
+geekdocEditPath: edit/master/docs/ocis/adr
+geekdocFilePath: 0003-third-decision.md
+---
 
-## Status
-
-Accepted
-head -7 doc/adr/0003-third-decision.md
-# 3. Third Decision
-
-Date: 1992-01-12
-
-## Status
-
-Accepted
+* Status: proposed
+* Deciders: [list everyone involved in the decision] <!-- optional -->
+* Date: 1992-01-12

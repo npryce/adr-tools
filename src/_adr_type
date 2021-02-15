@@ -1,8 +1,0 @@
-#!/bin/bash
-set -e
-eval "$($(dirname $0)/adr-config)"
-
-if [ -f .adr-type ]
-then
-    cat .adr-type
-fi
