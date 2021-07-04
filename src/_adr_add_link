@@ -25,4 +25,7 @@ awk -v link_type="$link_type" -v target="$(basename $target)" -v target_title="$
 	{ print }
 ' "$source" > "$source.tmp"
 
-mv "$source.tmp" "$source"
+if [ -e "$source.tmp" ];
+then
+  mv "$source.tmp" "$source"
+fi

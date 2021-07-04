@@ -29,4 +29,7 @@ awk -v current_status="$current_status" '
 	{ print }
 ' "$file" > "$file.tmp"
 
-mv "$file.tmp" "$file"
+if [ -e "$file.tmp" ];
+then
+  mv "$file.tmp" "$file"
+fi
