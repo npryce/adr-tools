@@ -1,0 +1,16 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+cat <<ENDHELP
+usage: adr config 
+
+Displays the current configuration.
+
+The adr_template_dir parameter defaults to the adr installation
+but can be overwriten if a custom template is required by settting the
+ADR_TEMPLATE environment variable to the custom file.
+
+    export ADR_TEMPLATE=<adr template file>
+
+ENDHELP

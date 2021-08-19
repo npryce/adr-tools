@@ -42,11 +42,14 @@ when you initialise the ADR log.
     ADR 9, and changes the status of ADR 9 to indicate that it is
     superceded by the new ADR.  It then opens the new ADR in your
     editor of choice.
+
+3.  Configure the template.
+
+        export ADR_TEMPLATE=<path to file>
     
-3. For further information, use the built in help:
+4. For further information, use the built in help:
 
         adr help
-
 
 See the [tests](tests/) for detailed examples.
 
