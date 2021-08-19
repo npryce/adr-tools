@@ -3,5 +3,10 @@
 
 basedir=$(cd -L $(dirname $0) >/dev/null 2>&1 && pwd -L)
 
+adr_template=$basedir
+if [[ -n $ADR_TEMPLATE  ]]; then
+  adr_template=`dirname $ADR_TEMPLATE`
+fi
+
 echo 'adr_bin_dir="'"${basedir}"'"'
-echo 'adr_template_dir="'"${basedir}"'"'
+echo 'adr_template_dir="'"${adr_template}"'"'
