@@ -15,7 +15,7 @@ eval "$($(dirname $0)/adr-config)"
 ## the template for the new ADR.  Otherwise a default template is used that
 ## follows the style described by Michael Nygard in this article:
 ##
-##   http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions
+##   https://cognitect.com/blog/2011/11/15/documenting-architecture-decisions
 ##
 ## Options:
 ##
