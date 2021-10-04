@@ -5,4 +5,4 @@ adr new second
 adr list
 adr new third
 adr list
-
+adr list -r
