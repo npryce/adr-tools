@@ -2,15 +2,37 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
-## usage: adr list
+## usage: adr list [-r]
 ##
 ## Lists the architecture decision records
+##
+## Options:
+##
+## -r        list decision records in reverse order
 
 adr_dir=$("$adr_bin_dir/_adr_dir")
 
+sort_args=()
+
+if (( $# > 0 )); then
+   while getopts ":r" arg; do
+       case "${arg}" in
+           r)
+             sort_args+=("-r")
+             ;;
+
+           *)
+             echo "invalid argument: $OPTARG" >&2
+             exit 1
+             ;;
+       esac
+   done
+   shift $((OPTIND-1))
+fi
+
 if [ -d $adr_dir ]
 then
-   find $adr_dir | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md" | sort
+   find $adr_dir | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md" | sort ${sort_args[@]}
 else
     echo "The $adr_dir directory does not exist"
     exit 1

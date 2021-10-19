@@ -10,3 +10,9 @@ adr generate toc
 * [1. First Decision](0001-first-decision.md)
 * [2. Second Decision](0002-second-decision.md)
 * [3. Third Decision](0003-third-decision.md)
+adr generate toc -r
+# Architecture Decision Records
+
+* [3. Third Decision](0003-third-decision.md)
+* [2. Second Decision](0002-second-decision.md)
+* [1. First Decision](0001-first-decision.md)
