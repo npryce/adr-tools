@@ -14,17 +14,21 @@ adr_dir=$("$adr_bin_dir/_adr_dir")
 
 sort_args=()
 
-while getopts ":r" arg; do
-    case "${arg}" in
-        r)
-            sort_args+=("-r")
-            ;;
-        *)
-            echo "invalid argument: $OPTARG" >&2
-            exit 1
-    esac
-    shift $((OPTIND-1))
-done
+if (( $# > 0 )); then
+   while getopts ":r" arg; do
+       case "${arg}" in
+           r)
+             sort_args+=("-r")
+             ;;
+
+           *)
+             echo "invalid argument: $OPTARG" >&2
+             exit 1
+             ;;
+       esac
+   done
+   shift $((OPTIND-1))
+fi
 
 if [ -d $adr_dir ]
 then
