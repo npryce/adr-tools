@@ -17,4 +17,4 @@ eval "$($(dirname $0)/adr-config)"
 source="${1:?SOURCE}"
 target="${2:?TARGET}"
 
-"$adr_bin_dir/_adr_rename" "$source" "$target"
+"$adr_bin_dir/_adr_move" "$source" "$target"
