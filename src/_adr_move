@@ -2,6 +2,9 @@
 set -e
 eval "$($(dirname $0)/adr-config)"
 
+echo -n | sed -E
+whichsed=$?
+
 function move {
   source=$("$adr_bin_dir/_adr_file" "${1:?SOURCE}")
   if [ ! -f "$source" ];
@@ -15,7 +18,12 @@ function move {
   target_filename=${source_filename/[0-9][0-9][0-9][0-9]/${target_num}}
 
   source_title=$("$adr_bin_dir/_adr_title" "$source")
-  source_short_title=$(echo "${source_title}" | sed 's/^[0-9]\+//g')
+  if [ $whichsed -eq 0 ];
+  then
+    source_short_title=$(echo "${source_title}" | sed -E 's/^[0-9]+\.[[:space:]]+//g')
+  else 
+    source_short_title=$(echo "${source_title}" | sed 's/^[0-9]\+\.\s\+//g')
+  fi
   # source_num=$(echo "${source_title}" | sed 's/\(^[0-9]\+\)\..*/\1/g')
   target_title="${target}. ${source_short_title}"
 
@@ -34,7 +42,12 @@ function move {
   # update references (it will update $target_file as well)
   for adr_filename in $("$adr_bin_dir/adr-list")
   do
-    sed -i '' "s/${source_filename_escaped}/${target_filename_escaped}/g ; s/${source_title_escaped}/${target_title_escaped}/g ;" ${adr_filename}
+    if [ $whichsed -eq 0 ];
+    then
+      sed -i '' "s/${source_filename_escaped}/${target_filename_escaped}/g ; s/${source_title_escaped}/${target_title_escaped}/g ;" ${adr_filename}
+    else 
+      sed -i "s/${source_filename_escaped}/${target_filename_escaped}/g ; s/${source_title_escaped}/${target_title_escaped}/g ;" ${adr_filename}
+    fi
   done 
 }
 
