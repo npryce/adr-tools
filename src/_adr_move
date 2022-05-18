@@ -5,15 +5,18 @@ eval "$($(dirname $0)/adr-config)"
 echo -n | sed -E
 whichsed=$?
 
+adr_dir=$("$adr_bin_dir/_adr_dir")
+
 function move {
-  source=$("$adr_bin_dir/_adr_file" "${1:?SOURCE}")
+  source_num=$(printf "%04d" $1)
+  source=$("$adr_bin_dir/_adr_file" "${adr_dir}/${source_num}")
   if [ ! -f "$source" ];
   then
     return
   fi
   source_dir=${source%/*}
   source_filename=${source##*/}
-  target=${2:?TARGET}
+  target=$2
   target_num=$(printf "%04d" ${target})
   target_filename=${source_filename/[0-9][0-9][0-9][0-9]/${target_num}}
 
@@ -24,7 +27,6 @@ function move {
   else 
     source_short_title=$(echo "${source_title}" | sed 's/^[0-9]\+\.\s\+//g')
   fi
-  # source_num=$(echo "${source_title}" | sed 's/\(^[0-9]\+\)\..*/\1/g')
   target_title="${target}. ${source_short_title}"
 
   pattern_escape_cmd='sed -e s/[]\/$*.^[]/\\&/g'
@@ -50,8 +52,6 @@ function move {
     fi
   done 
 }
-
-adr_dir=$("$adr_bin_dir/_adr_dir")
 
 if [ -d $adr_dir ]
 then
