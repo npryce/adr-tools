@@ -1,0 +1,87 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+echo -n | sed -E
+whichsed=$?
+
+adr_dir=$("$adr_bin_dir/_adr_dir")
+
+function move {
+  source_num=$(printf "%04d" $1)
+  source=$("$adr_bin_dir/_adr_file" "${adr_dir}/${source_num}")
+  if [ ! -f "$source" ];
+  then
+    return
+  fi
+  source_dir=${source%/*}
+  source_filename=${source##*/}
+  target=$2
+  target_num=$(printf "%04d" ${target})
+  target_filename=${source_filename/[0-9][0-9][0-9][0-9]/${target_num}}
+
+  source_title=$("$adr_bin_dir/_adr_title" "$source")
+  if [ $whichsed -eq 0 ];
+  then
+    source_short_title=$(echo "${source_title}" | sed -E 's/^[0-9]+\.[[:space:]]+//g')
+  else 
+    source_short_title=$(echo "${source_title}" | sed 's/^[0-9]\+\.\s\+//g')
+  fi
+  target_title="${target}. ${source_short_title}"
+
+  pattern_escape_cmd='sed -e s/[]\/$*.^[]/\\&/g'
+  sub_escape_cmd='sed -e s/[\/&]/\\&/g'
+  source_filename_escaped=$(echo "${source_filename}" | ${pattern_escape_cmd})
+  target_filename_escaped=$(echo "${target_filename}" | ${sub_escape_cmd})
+
+  source_title_escaped=$(echo "${source_title}" | ${pattern_escape_cmd})
+  target_title_escaped=$(echo "${target_title}" | ${sub_escape_cmd})
+
+  echo -n "."
+  # update file
+  mv ${source} ${source_dir}/${target_filename}
+
+  # update references (it will update $target_file as well)
+  for adr_filename in $("$adr_bin_dir/adr-list")
+  do
+    if [ $whichsed -eq 0 ];
+    then
+      sed -i '' "s/${source_filename_escaped}/${target_filename_escaped}/g ; s/${source_title_escaped}/${target_title_escaped}/g ;" ${adr_filename}
+    else 
+      sed -i "s/${source_filename_escaped}/${target_filename_escaped}/g ; s/${source_title_escaped}/${target_title_escaped}/g ;" ${adr_filename}
+    fi
+  done 
+}
+
+if [ -d $adr_dir ]
+then
+   count=`find $adr_dir | grep -E "^$adr_dir/[0-9]+-[^/]*\\.md" | wc -l | xargs`
+else
+    echo "The $adr_dir directory does not exist"
+    exit 1
+fi
+
+end=`expr $count + 1`
+
+move $1 $end
+
+#Let's also rename all subsequence files so that they're still numbered in the correct order
+if test $1 -gt $2
+then
+  before=$(expr $1 - 1)
+  for i in $(seq $before $2);
+  do
+    plusone=$(expr $i + 1)
+    move $i $plusone
+  done
+  move $end $2
+else
+  after=$(expr $1 + 1)
+  for i in $(seq $after $2);
+  do
+    minusone=$(expr $i - 1)
+    move $i $minusone
+  done
+  move $end $2
+fi
+
