@@ -1,1 +1,6 @@
 build/
+
+#
+# macOS file system
+#
+.DS_Store
