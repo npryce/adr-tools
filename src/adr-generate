@@ -6,7 +6,7 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ## Generates summary documentation about the architecture decision records
 ## that is typically fed into the tool chain for publishing a project's 
-## documentatation.
+## documentation.
 ##
 ## To list the report types that can be generated, run:
 ##
