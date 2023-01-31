@@ -91,9 +91,9 @@ then
     exit 1
 fi
 
-if [ -d $dstdir ]
+if [ -d "$dstdir" ]
 then
-    maxid=$(ls $dstdir | grep -Eo '^[0-9]+' | sed -e 's/^0*//' | sort -rn | head -1)
+    maxid=$(ls "$dstdir" | grep -Eo '^[0-9]+' | sed -e 's/^0*//' | sort -rn | head -1)
     newnum=$(($maxid + 1))
 else
     newnum=1
@@ -101,16 +101,16 @@ fi
 
 newid=$(printf "%04d" $newnum)
 slug=$(echo -n $title | tr -Ccs "[:alnum:]" - | tr "[:upper:]" "[:lower:]" | sed -e 's/[^[:alnum:]]*$//' -e 's/^[^[:alnum:]]*//')
-dstfile=$dstdir/$newid-$slug.md
+dstfile="$dstdir"/$newid-$slug.md
 date=${ADR_DATE:-$(date +%Y-%m-%d)}
 
-mkdir -p $dstdir
+mkdir -p "$dstdir"
 cat $template | sed \
     -e "s|NUMBER|$newnum|" \
     -e "s|TITLE|$title|" \
     -e "s|DATE|$date|" \
     -e "s|STATUS|Accepted|" \
-    > $dstfile
+    > "$dstfile"
 
 for target in "${superceded[@]}"
 do
