@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")"/adr-config)"
 
-head -1 $("$adr_bin_dir/_adr_file" "$1") | cut -c 3-
+head -1 "$("$adr_bin_dir/_adr_file" "$1")" | cut -c 3-

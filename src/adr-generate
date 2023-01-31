@@ -1,11 +1,11 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")"/adr-config)"
 
 ## usage: adr generate [REPORT [OPTION ...]]
 ##
 ## Generates summary documentation about the architecture decision records
-## that is typically fed into the tool chain for publishing a project's 
+## that is typically fed into the tool chain for publishing a project's
 ## documentatation.
 ##
 ## To list the report types that can be generated, run:
@@ -16,7 +16,7 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ##     adr help generate <report-type>
 ##
-## For example, the following command will run the "toc" (table of contents) 
+## For example, the following command will run the "toc" (table of contents)
 ## generator:
 ##
 ##     adr generate toc
@@ -27,7 +27,7 @@ eval "$($(dirname $0)/adr-config)"
 
 cmd=$1
 
-if [ -z $cmd ]
+if [ -z "$cmd" ]
 then
     (cd "$adr_bin_dir" && find . -name '_adr_generate_*') | cut -c 17-
 else

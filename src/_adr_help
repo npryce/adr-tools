@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")"/adr-config)"
 
 cmds=("$@")
 
@@ -27,10 +27,10 @@ else
 	else
 		grep -E '^##' "$cmdexe" | cut -c 4-
 	fi
-	
+
 	# Assumes only two levels of command / subcommand.
 	subcmds=( $(compgen -G "$adr_bin_dir/_adr_$1_"'*') )
-	
+
 	if (( ${#subcmds} > 0 ))
 	then
 		echo
