@@ -1,0 +1,31 @@
+adr init architecture-log
+architecture-log/0001-record-architecture-decisions.md
+adr new First Record
+architecture-log/0002-first-record.md
+
+export VISUAL
+export EDITOR
+
+if adr edit
+then
+  echo ERROR: should have failed
+fi
+ERROR: editor not configured
+
+VISUAL=
+EDITOR=fake-editor
+adr edit
+EDITOR architecture-log/0002-first-record.md
+
+VISUAL=fake-visual
+EDITOR=
+adr edit
+VISUAL architecture-log/0002-first-record.md
+
+VISUAL=fake-visual
+EDITOR=fake-editor
+adr edit
+VISUAL architecture-log/0002-first-record.md
+
+adr edit 1
+VISUAL architecture-log/0001-record-architecture-decisions.md
