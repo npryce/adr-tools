@@ -114,9 +114,9 @@ cat $template | sed \
 
 for target in "${superceded[@]}"
 do
-	"$adr_bin_dir/_adr_add_link" "$target" "Superceded by" "$dstfile"
+	"$adr_bin_dir/_adr_add_link" "$target" "Superseded by" "$dstfile"
 	"$adr_bin_dir/_adr_remove_status" "Accepted" "$target"
-	"$adr_bin_dir/_adr_add_link" "$dstfile" "Supercedes" "$target"
+	"$adr_bin_dir/_adr_add_link" "$dstfile" "Supersedes" "$target"
 done
 
 for l in "${links[@]}"
