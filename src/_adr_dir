@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 eval "$($(dirname $0)/adr-config)"
 
@@ -19,7 +19,7 @@ do
 	then
 	    mkrel $(cat $(mkrel .adr-dir))
 		exit
-	elif [ -d $(mkrel doc/adr) ] 
+	elif [ -d $(mkrel doc/adr) ]
 	then
 		mkrel doc/adr
 		exit

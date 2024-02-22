@@ -1,11 +1,11 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 eval "$($(dirname $0)/adr-config)"
 
 ## usage: adr init [DIRECTORY]
-## 
+##
 ## Initialises the directory of architecture decision records:
-## 
+##
 ##  * creates a subdirectory of the current working directory
 ##  * creates the first ADR in that subdirectory, recording the decision to
 ##    record architectural decisions with ADRs.
