@@ -1,0 +1,67 @@
+#!/bin/bash
+set -e
+eval "$($(dirname $0)/adr-config)"
+
+## usage: adr generate table [-i INTRO] [-o OUTRO] [-p LINK_PREFIX]
+##
+## Generates a table in Markdown format to stdout that contains the ADR name and status.
+##
+## Options:
+##
+## -i INTRO  precede the table with the given INTRO text.
+## -o OUTRO  follow the table with the given OUTRO text.
+## -p LINK_PREFIX   
+##           prefix each decision file link with LINK_PREFIX.
+##
+## Both INTRO and OUTRO must be in Markdown format.
+
+args=$(getopt i:o:p: $*)
+set -- $args
+
+link_prefix=
+
+for arg
+do
+    case "$arg"
+    in
+        -i)
+            intro="$2"
+            shift 2
+            ;;
+        -o)
+            outro="$2"
+            shift 2
+            ;;
+        -p)
+            link_prefix="$2"
+            shift 2
+            ;;
+        --)
+            shift
+            break
+            ;;
+    esac
+done
+
+if [ ! -z $intro ]
+then
+    cat "$intro"
+    echo
+fi
+
+echo "|ADR|Status|"
+echo "|---|---|"
+for f in $("$adr_bin_dir/adr-list")
+do
+    title=$("$adr_bin_dir/_adr_title" $f)
+    link=${link_prefix}$(basename $f)
+    status=$("$adr_bin_dir/_adr_status" $f)
+
+    echo "|[$title]($link)|$status|"
+done
+
+if [ ! -z $outro ]
+then
+    echo
+    cat "$outro"
+fi
