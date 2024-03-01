@@ -8,8 +8,8 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ## Options:
 ##
-## -i INTRO  precede the table of contents with the given INTRO text.
-## -o OUTRO  follow the table of contents with the given OUTRO text.
+## -i INTRO  precede the table with the given INTRO text.
+## -o OUTRO  follow the table with the given OUTRO text.
 ## -p LINK_PREFIX   
 ##           prefix each decision file link with LINK_PREFIX.
 ##
@@ -48,11 +48,6 @@ then
     cat "$intro"
     echo
 fi
-
-cat <<EOF
-## Architecture Decision Records
-
-EOF
 
 echo "|ADR|Status|"
 echo "|---|---|"
