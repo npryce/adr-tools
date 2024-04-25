@@ -1,5 +1,5 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname $0)"/adr-config)"
 
 "$adr_bin_dir/adr-list" | grep "$1" | head -1

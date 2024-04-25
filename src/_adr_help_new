@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")"/adr-config)"
 
 cat <<ENDHELP
 usage: adr new [-s SUPERCEDED] [-l TARGET:LINK:REVERSE-LINK] TITLE_TEXT...
@@ -30,14 +30,14 @@ Options:
                 it has been superceded by the new ADR.
 
 -l TARGET:LINK:REVERSE-LINK
-                Links the new ADR to a previous ADR.  
-                TARGET is a reference (number or partial filename) of a 
-                previous decision. 
+                Links the new ADR to a previous ADR.
+                TARGET is a reference (number or partial filename) of a
+                previous decision.
                 LINK is the description of the link created in the new ADR.
                 REVERSE-LINK is the description of the link created in the
                 existing ADR that will refer to the new ADR.
 
-Multiple -s and -l options can be given, so that the new ADR can supercede 
+Multiple -s and -l options can be given, so that the new ADR can supercede
 or link to multiple existing ADRs.
 
 E.g. to create a new ADR with the title "Use MySQL Database":

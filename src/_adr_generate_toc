@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname $0)"/adr-config)"
 
 ## usage: adr generate toc [-i INTRO] [-o OUTRO] [-p LINK_PREFIX]
 ##
@@ -10,12 +10,12 @@ eval "$($(dirname $0)/adr-config)"
 ##
 ## -i INTRO  precede the table of contents with the given INTRO text.
 ## -o OUTRO  follow the table of contents with the given OUTRO text.
-## -p LINK_PREFIX   
+## -p LINK_PREFIX
 ##           prefix each decision file link with LINK_PREFIX.
 ##
 ## Both INTRO and OUTRO must be in Markdown format.
 
-args=$(getopt i:o:p: $*)
+args=$(getopt i:o:p: "$@")
 set -- $args
 
 link_prefix=
@@ -48,7 +48,7 @@ cat <<EOF
 
 EOF
 
-if [ ! -z $intro ]
+if [ -n "$intro" ]
 then
     cat "$intro"
     echo
