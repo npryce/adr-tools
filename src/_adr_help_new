@@ -12,7 +12,7 @@ preferred; EDITOR is used if VISUAL is not set).  After editing, the
 file name of the ADR is output to stdout, so the command can be used in
 scripts.
 
-If the ADR directory contains a file `templates/template.md`, this is used as
+If the ADR directory contains a file "templates/template.md", this is used as
 the template for the new ADR.  Otherwise the following file is used:
 
   ${adr_template_dir}/template.md
