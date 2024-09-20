@@ -13,4 +13,10 @@ eval "$($(dirname $0)/adr-config)"
 
 pager="${ADR_PAGER:-${PAGER:-more}}"
 
+## check for pager support, fallback to cat
+if ! command -v echo 0 | more  &> /dev/null
+then
+    pager=cat
+fi 
+
 ("$adr_bin_dir/_adr_help" "$@") | $pager
