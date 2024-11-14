@@ -23,8 +23,8 @@ digraph {
     _5 [label="5. The end"; URL="0005-the-end.html"];
     _4 -> _5 [style="dotted", weight=1];
   }
-  _3 -> _2 [label="Supercedes", weight=0]
-  _5 -> _3 [label="Supercedes", weight=0]
+  _3 -> _2 [label="Supersedes", weight=0]
+  _5 -> _3 [label="Supersedes", weight=0]
 }
 # with specified root and extension in links
 adr generate graph -p http://example.com/ -e .xxx
@@ -41,6 +41,6 @@ digraph {
     _5 [label="5. The end"; URL="http://example.com/0005-the-end.xxx"];
     _4 -> _5 [style="dotted", weight=1];
   }
-  _3 -> _2 [label="Supercedes", weight=0]
-  _5 -> _3 [label="Supercedes", weight=0]
+  _3 -> _2 [label="Supersedes", weight=0]
+  _5 -> _3 [label="Supersedes", weight=0]
 }
