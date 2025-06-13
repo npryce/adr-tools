@@ -15,6 +15,9 @@ ASDF-VM (Linux, MacOS X)
 
 ADR-Tools can be installed from the [ASDF-VM version manager](https://github.com/asdf-vm/asdf).
 
+    asdf plugin add adr-tools
+    asdf install adr-tools latest
+
 From a Release Package (Linux, MacOS X)
 ---------------------------------------
 
