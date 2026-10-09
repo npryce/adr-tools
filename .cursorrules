@@ -1,0 +1,13 @@
+# Cursor & Open-Source AI Rules
+
+This project centralizes its custom skills and rules.
+Whenever performing one of the tasks below, **STOP** and read the corresponding instruction file before writing any code.
+
+### 📚 Skills
+1. **CI Setup for ADRs**
+   - **Trigger:** The user asks to configure CI, Github Actions, or validate ADRs in the repository.
+   - **Mandatory Action:** Read the file `.agents/skills/setup-ci-adr/SKILL.md` and strictly follow its step-by-step instructions.
+
+### 🛠️ Project Rules
+- The root folder for architectural decisions is `doc/adr` (or equivalent).
+- The `toc.md` index must always be updated via the `adr generate toc` command.
